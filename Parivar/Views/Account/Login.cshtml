@@ -1,0 +1,99 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Sign In";
+}
+
+@section Styles{
+    <style type="text/css">
+            /* .single-form {
+            margin-top: 15px;
+        }*/
+        .login-register {
+            padding-top: 50px !important;
+        }
+        .banner-content {
+            padding-top: 50px !important;
+            padding-bottom: 50px !important;
+        }
+    </style>
+}
+<!--====== Page Banner Start ======-->
+<section class="page-banner">
+    <div class="page-banner-bg bg_cover" style="background-image: url(/theme/images/page-banner.jpg);">
+        <div class="container">
+            <div class="banner-content text-center">
+                <h2 class="title">Login</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--====== Page Banner Ends ======-->
+<!--====== Login Start ======-->
+
+<section class="login-register">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="login-register-content">
+                    <h4 class="title">Sign In to Your Account</h4>
+                    <div class="text-danger m-2">
+                        @Html.ValidationSummary()
+                    </div>
+                    <div class="login-register-form">
+                        <form id="frmLogin" class="mb-5" asp-action="Login" asp-controller="Account" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                            @Html.AntiForgeryToken()
+                            <div class="single-form">
+                                <label for="Email">Email address *</label>
+                                <input asp-for="Email" type="text" placeholder="Email">
+                                <span asp-validation-for="Email"></span>
+                            </div>
+                            <div class="single-form">
+                                <label for="Password">Password</label>
+                                <input asp-for="Password" type="password" placeholder="Password">
+                                <span asp-validation-for="Password"></span>
+                            </div>
+                            <div class="single-form">
+                                <button class="main-btn btn-block">Login</button>
+                            </div>
+                            <div class="single-form d-flex justify-content-between">
+                                <div class="checkbox">
+                                    <input asp-for="RememberMe" type="checkbox">
+                                    <label for="RememberMe"><span></span> Remember Me</label>
+                                </div>
+                                <div class="forget">
+                                    <a href="/Account/ForgotPassword">Lost Your Password</a>
+                                </div>
+                            </div>
+                            <div class="single-form">
+                                <label>You don't have account ?</label>
+                                <a href="/Home/AddFamily" class="main-btn main-btn-2 btn-block">Register Family</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--====== Login Ends ======-->
+
+@section Scripts{
+    <script type="text/javascript">
+        var $form = $('#frmLogin');
+        $('body').on('keypress', function (e) {
+            if (e.which === 13) {
+                $.validator.unobtrusive.parse($form);
+                if ($form.valid()) {
+                    $form.submit();
+                    e.preventDefault();
+                }
+            }
+        });
+
+        $("#btnLogin").click(function () {
+            $form.submit();
+        });
+    </script>
+}

@@ -1,0 +1,73 @@
+// Configure bundling and minification for the project.
+// More info at https://go.microsoft.com/fwlink/?LinkId=808241
+[
+  {
+    "outputFileName": "wwwroot/css/FrontEnd.min.css",
+    "inputFiles": [
+      //"wwwroot/theme/css/style.css",
+      //"wwwroot/theme/css/main-color.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/FrontEnd.min.js",
+    "inputFiles": [
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/css/BackEnd.min.css",
+    "inputFiles": [
+      
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/BackEnd.min.js",
+    "inputFiles": [
+     
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/css/Datatable.min.css",
+    "inputFiles": [
+      "wwwroot/adminTheme/plugins/datatables/jquery.dataTables.min.css",
+      //"wwwroot/adminTheme/plugins/datatables/buttons.bootstrap4.min.css",
+      "wwwroot/adminTheme/plugins/datatables/fixedHeader.bootstrap4.min.css",
+      "wwwroot/adminTheme/plugins/datatables/responsive.bootstrap4.min.css",
+      "wwwroot/adminTheme/plugins/datatables/dataTables.bootstrap4.min.css",
+      "wwwroot/adminTheme/plugins/datatables/scroller.bootstrap4.min.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Datatable.min.js",
+    "inputFiles": [
+      "wwwroot/adminTheme/plugins/datatables/jquery.dataTables.min.js",
+      "wwwroot/adminTheme/plugins/datatables/dataTables.bootstrap4.min.js",
+      "wwwroot/adminTheme/plugins/datatables/dataTables.buttons.min.js",
+      //"wwwroot/adminTheme/plugins/datatables/buttons.bootstrap4.min.js",
+      //"wwwroot/adminTheme/plugins/datatables/jszip.min.js",
+      //"wwwroot/adminTheme/plugins/datatables/pdfmake.min.js",
+      //"wwwroot/adminTheme/plugins/datatables/vfs_fonts.js",
+      //"wwwroot/adminTheme/plugins/datatables/buttons.html5.min.js",
+      //"wwwroot/adminTheme/plugins/datatables/buttons.print.min.js",
+      "wwwroot/adminTheme/plugins/datatables/dataTables.fixedHeader.min.js",
+      "wwwroot/adminTheme/plugins/datatables/dataTables.keyTable.min.js",
+      "wwwroot/adminTheme/plugins/datatables/dataTables.scroller.min.js",
+      "wwwroot/adminTheme/plugins/datatables/dataTables.responsive.min.js",
+      "wwwroot/adminTheme/plugins/datatables/responsive.bootstrap4.min.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

@@ -1,0 +1,166 @@
+﻿@{
+    ViewData["Title"] = "Family Detail";
+}
+
+@section PageTitle{
+    <li class="active">Family Detail</li>
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <table id="dtFamilys" class="table table-striped table-bordered dt-responsive  nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr role="row" class="title_datatable">
+                            <th>Action</th>
+                            <th>Name</th>
+                            <th>Birth Date</th>
+                            <th>Gender</th>
+                            <th>Blood Group</th>
+                            <th>Relation Ship</th>
+                            <th>Mosal Surname</th>
+                            <th>Mosal Village</th>
+                            <th>Advance SKills</th>
+                            <th>Education</th>
+                            <th>Business</th>
+                            <th>Married</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> <!-- End Row -->
+
+
+@section PageScripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            BindFamilyList();
+        });
+
+        function BindFamilyList() {
+            if ($.fn.DataTable.isDataTable("#dtFamilys")) {
+                $("#dtFamilys").dataTable().fnDestroy();
+            }
+            const family = $("#dtFamilys").DataTable({
+                "sAjaxSource": "/Member/Familys/GetFamilyMemberList",
+                "columns": [
+                    {
+                        "data": "id",
+                        "autoWidth": false,
+                        "searchable": false,
+                        "orderable": false,
+                        "render": function (data, type, row) {
+                            const content = `<li><a href="javascript:;" ${dataParams("Family Detail", "view-details", data)} class="dropdown-item action"><i class="fa fa-eye" aria-hidden="true"></i> Family Detail</a></li>`;
+                            return dataTableAction(content);
+                        }
+                    },
+                    {
+                        "data": "fullName",
+                        "autoWidth": false,
+                        "searchable": true
+                    },
+                    {
+                        "data": "dateCreated",
+                        "autoWidth": false,
+                        "searchable": true
+                    },
+                    {
+                        "data": "gender",
+                        "autoWidth": false,
+                        "searchable": true,
+                        "render": function (data, type, row) {
+                            return getGender(data);
+                        }
+                    },
+                    {
+                        "data": "bloodGroup",
+                        "autoWidth": false,
+                        "searchable": true
+                    },
+                    {
+                        "data": "relationShip",
+                        "autoWidth": false,
+                        "searchable": true
+                    },
+                    {
+                        "data": "mosalSurname",
+                        "autoWidth": false,
+                        "searchable": true
+                    },
+                    {
+                        "data": "mosalVillage",
+                        "autoWidth": false,
+                        "searchable": true
+                    },
+                    {
+                        "data": "advanceKills",
+                        "autoWidth": false,
+                        "searchable": true
+                    },
+                    {
+                        "data": "education",
+                        "autoWidth": false,
+                        "searchable": true
+                    },
+                    {
+                        "data": "bussioness",
+                        "autoWidth": false,
+                        "searchable": true
+                    },
+                    {
+                        "data": "isMarried",
+                        "searchable": false,
+                        "orderable": false,
+                        "className": "text-center",
+                        "render": function (data, type, row) {
+                            return `<input type="checkbox" data-id="${row.id}" ${(data == 1 ? 'checked' : '')} data-on="YES" data-off="NO" disabled data-toggle="toggle" data-style="ios" />`;
+                        }
+                    },
+                ]
+            });
+
+            $('#dtFamilys').on('draw.dt', function () {
+                reInitBootstrapToggle();
+            });
+        }
+
+
+        $('#dtFamilys').on("change", ".admin_toggle", function (e) {
+            const current = $(e.currentTarget).find("input");
+            const id = $(current).data("id");
+            $.ajax({
+                url: "/Member/Familys/ManageFamilyStatus",
+                data: { id: id },
+                type: "POST",
+                success: function (response) {
+                    updateModifiedDate(id);
+                    Parivar.HandleResponse(response);
+                },
+                error: function (data) {
+                }
+            });
+        });
+
+        $('#dtFamilys').on("click", ".action", function (e) {
+            const flag = $(e.currentTarget).data("flag");
+            const id = $(e.currentTarget).data("id");
+            switch (flag) {
+                case "edit":
+                    AddEditFamily(id);
+                    break;
+                case "view-details":
+                    FamilyDetail(id);
+                    break;
+                default:
+            }
+        });
+
+        function FamilyDetail(id) {
+            window.location.href = `/Member/Family/${id}`;
+        }
+    </script>
+}

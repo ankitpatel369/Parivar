@@ -1,0 +1,526 @@
+﻿
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer[LocalizationConstant.AboutUs];
+}
+@section Styles{
+    <style type="text/css">
+        .banner-content {
+            padding-top: 70px !important;
+            padding-bottom: 50px !important;
+        }
+
+        .about-content {
+            max-width: 100% !important;
+        }
+
+            .about-content .line {
+                width: 390px !important;
+            }
+
+        .history-area p {
+            margin-bottom: 1px;
+        }
+
+        .features-image-2::before {
+            background-color: transparent !important;
+        }
+
+        .features-image-2::after {
+            background-color: transparent !important;
+        }
+
+        .features-items .features-items-wrapper .single-features-item {
+            padding: 50px 0px 50px 0px !important;
+            max-width: 100% !important;
+        }
+
+        .media-body, .item-icon {
+            margin-right: 20px !important;
+        }
+
+        .pull-right {
+            float: right;
+        }
+    </style>
+}
+<!--====== Page Banner Start ======-->
+
+<section class="page-banner">
+    <div class="page-banner-bg bg_cover" style="background-image: url(/theme/images/page-banner.jpg);">
+        <div class="container">
+            <div class="banner-content text-center">
+                <h2 class="title">@Localizer[LocalizationConstant.AboutUs]</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--====== Page Banner Ends ======-->
+<!--====== પરિવાર નો ઇતિહાસ Start ======-->
+
+<section class="about-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="about-content mt-40">
+                    <h2 class="about-title">પરિવાર નો ઇતિહાસ</h2>
+                    <span class="line"></span>
+                    <p class="mb-2 text-justify">
+                        જાણવા મળેલી માહિતી મુજબ <b>વિ. સં.૧૩૨૨</b> માં વડોદરા જિલ્લાના પાદરા તાલુકાના ડભાસા ગામના રહેવાસી હાલાર પંથકમાં આવીને વસ્યા ત્યારથી <b>ડભાસીયા</b> કહેવાણા.
+                        ત્યાર બાદ જૂનાગઢ જીલ્લા ના ભેસાણ તાલુકા ના છોડવડી ગામના રાખોલીયા પરિવાર ના સુરાપુરા દાદા  નામ રણછોડદાદા જેઓ ની ડેરી હાલ ઉપસ્થિત છે. તેમના વંશજો ના ત્રણ દીકરાઓ હતા જેઓ ની વંશાવલી નીચે મુજબ છે.
+                        <br /><br />
+                        <b>છોડવડી ગામના હોવાથી છોડવડીયા કહેવાણા.</b>
+                        <br /> <br />
+                        <i class="far fa-check-circle"></i> ગઢીયા વિરપુર &nbsp; &nbsp; &nbsp; <i class="far fa-check-circle"></i> ધારા કેરાળા &nbsp; &nbsp; &nbsp; <i class="far fa-check-circle"></i> ડુંડાસ
+                    </p>
+                    @*<a href="#" class="main-btn mt-2">@Localizer[LocalizationConstant.ReadMore]</a>*@
+                </div>
+            </div>
+            <div class="col-lg-6 mt-50">
+                <img src="~/theme/images/about/tree-of-family.png" alt="tree-of-family" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="about-content">
+                    <p class="text-justify">
+                        ઉપરના ત્રણ ગામથી અલગ અલગ પડેલા નીચે મુજબના ગામડાઓમાં જયને વસવાટ કર્યો છે. દોલતી, રામગઢ, જોગીદાસની આંબરડી, રૂખડ ભગત ની વાવડી ……….., જેવા બીજા અન્યગામો છે.
+                    </p>
+                    <p class="text-justify">
+                        અન્ય એક માહિતી અનુસાર છોડવડી ગામથી નીકળેલા નાગજીબાપા અને લાખાબાપા નામના પૂર્વજો બોટાદ જિલ્લાના ગઢડા (સ્વામીના) તાલુકામાં આવેલ ઢસા ગામ આવીને નિવાસ કર્યો ત્યારથી <b>નાગજીબાપા ના વંશજો નાગાણી અને લાખાબાપા ના વંશજો લાખાણી </b>કહેવાણા.
+                    </p>
+                    <p class="text-justify">
+                        આમ ઉપરની માહિતી મુજબ ડભાસીયા, રાખોલીયા, છોડવડીયા, નાગાણી અને લાખાણી આ બધી જ અટક ના પરિવાર ના પૂર્વજો એક જ છે, એવું માનવામાં આવે છે.
+                        <br /> <br />
+                        <b>નોધ :- </b>પ્રાચીન સમય માં ઉચ્ચારણ, ભાષા ની શુધ્ધી અને શિક્ષણ ના અભાવ ના કારણે <b>ચ, છ, સ, શ, ષ</b> જેવા અક્ષરો બોલવામાં કોઈ તફાવત નહીં માનતા હતા અને માત્ર સ અક્ષર નું જ ઉચ્ચારણ કરવામાં આવતું જેના કારણે છોડવડીયા માંથી <b>ચોડવડીયા, સોડવડીયા</b> જેવી અટક નું ઉચ્ચારણ વર્તમાન સમય માં થઈ રહ્યું છે, પરંતુ મૂળ સૌ એક જ છે.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--====== પરિવાર નો ઇતિહાસ Ends ======-->
+<!--====== માતાજીના Start ======-->
+
+<div class="mt-50">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="about-content">
+                    <h2 class="about-title">માતાજીના મઢનો ઇતિહાસ</h2>
+                    <span class="line" style="width:505px !important;"></span>
+                    <p class="mb-2 text-justify">
+                        જાણવા મળેલી માહિતી મુજબ માં ભવાની તરીકે પૂજાતા દેવી સૌરાષ્ટ્રમાં બ્રહ્માણી અને ત્યારબાદ ખોડીયારમાં તરીકે પુજાય છે. પરિવાર ના કુળદેવી તરીકે ખોડિયાર માતાજી નો મઢ બોટાદ જિલ્લાના ઢસા ગામમાં સ્થાપની થઈ, જે હાલ બિરાજમાન છે. ત્યારબાદ માતાજી ના મઢ નીચે મુજબ હાલ બિરાજમાન છે.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="features-image-2">
+                    <img src="~/theme/images/khodal-maa.png" alt="Features">
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="features-items">
+                    <div class="features-items-wrapper">
+                        <div class="single-features-item d-flex align-items-center">
+                            <div class="item-content media-body">
+                                <p>વિરપુર</p>
+                            </div>
+                            <div class="item-icon">
+                                <p>તા:- ધારી<br /> જી:- અમરેલી</p>
+                            </div>
+                        </div>
+                        <div class="single-features-item d-flex align-items-center">
+                            <div class="item-content media-body">
+                                <p>પરબડી</p>
+                            </div>
+                            <div class="item-icon">
+                                <p>તા:- ધારી<br /> જી:- અમરેલી</p>
+                            </div>
+                        </div>
+                        <div class="single-features-item d-flex align-items-center">
+                            <div class="item-content media-body">
+                                <p>ડુંડાસ</p>
+                            </div>
+                            <div class="item-icon">
+                                <p>તા:- મહુવા<br /> જી:- ભાવનગર</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="features-items-wrapper">
+                        <div class="single-features-item d-flex align-items-center">
+                            <div class="item-content media-body">
+                                <p>ધાર કેરાળા</p>
+                            </div>
+                            <div class="item-icon">
+                                <p>તા:- સાવરકુંડલા<br /> જી:- અમરેલી</p>
+                            </div>
+                        </div>
+                        <div class="single-features-item d-flex align-items-center">
+                            <div class="item-content media-body">
+                                <p>દોલતી</p>
+                            </div>
+                            <div class="item-icon">
+                                <p class="mb-1">તા:- સાવરકુંડલા<br /> જી:- અમરેલી</p>
+                            </div>
+                        </div>
+                        <div class="single-features-item d-flex align-items-center">
+                            <div class="item-content media-body">
+                                <p>કાન્ગચીયાળા</p>
+                            </div>
+                            <div class="item-icon">
+                                <p>તા:- વિસાવદર<br /> જી:- જૂનાગઢ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="/Parivar/DevPlaces" class="main-btn pull-right">@Localizer[LocalizationConstant.SeeMore]</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--======  માતાજીના Ends ======-->
+<!--====== સુરાપુરાનો Start ======-->
+
+<div class="mt-50">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="about-content">
+                    <h2 class="about-title">સુરાપુરા નો ઇતિહાસ</h2>
+                    <span class="line" style="width:400px !important;"></span>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="features-image-2">
+                    <img src="~/theme/images/surapura.png" alt="Features">
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="features-items">
+                    <div class="features-items-wrapper">
+                        <div class="single-features-item d-flex align-items-center">
+                            <div class="item-content media-body">
+                                <p>વિરપુર</p>
+                            </div>
+                            <div class="item-icon">
+                                <p>શ્રી વીરાબાપા</p>
+                            </div>
+                        </div>
+                        <div class="single-features-item d-flex align-items-center">
+                            <div class="item-content media-body">
+                                <p>પરબડી</p>
+                            </div>
+                            <div class="item-icon">
+                                <p>શ્રી ટપુદાદા<br /> શ્રી નાગજીદાદા</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="features-items-wrapper">
+                        <div class="single-features-item d-flex align-items-center">
+                            <div class="item-content media-body">
+                                <p>ધાર કેરાળા</p>
+                            </div>
+                            <div class="item-icon">
+                                <p>શ્રી હરજીદાદા</p>
+                            </div>
+                        </div>
+                        <div class="single-features-item d-flex align-items-center">
+                            <div class="item-content media-body">
+                                <p>દોલતી</p>
+                            </div>
+                            <div class="item-icon">
+                                <p class="mb-1">શ્રી પ્રેમજીદાદા</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="/Parivar/DevPlaces" class="main-btn pull-right">@Localizer[LocalizationConstant.SeeMore]</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--======  સુરાપુરાનો Ends ======-->
+<!--====== કુળદેવીના મંદિરો Start ======-->
+
+<div class="mt-50">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="about-content">
+                    <h2 class="about-title">કુળદેવીના મંદિરો</h2>
+                    <span class="line" style="width: 325px !important;"></span>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="features-image-2">
+                    <img src="~/theme/images/temple.png" alt="Features">
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="features-items">
+                    <div class="features-items-wrapper">
+                        <h3>પરબડી</h3>
+                        <div class="single-features-item d-flex align-items-center">
+                            <div class="item-icon">
+                                <p>શ્રી રમેશભાઈ કરશનભાઇ<br /> <a class="text-dark" href="tel:+919409142150">+91 940 914 2150</a> </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="features-items-wrapper">
+                        <h3>ધાર કેરાળા</h3>
+                        <div class="single-features-item d-flex align-items-center">
+                            <div class="item-icon">
+                                <p>શ્રી ધીરુભાઈ<br /> <a class="text-dark" href="tel:+919979151853">+91 997 915 1853</a> </p>
+                                <br />
+                                <p>
+                                    શ્રી ભીખાભાઈ
+                                    <br /> <a class="text-dark" href="tel:+918758240491">+91 875 824 0491</a>
+                                    <br /> <a class="text-dark" href="tel:+918320431860">+91 832 043 1860</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <a href="/Parivar/DevPlaces" class="main-btn pull-right">@Localizer[LocalizationConstant.SeeMore]</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--======  કુળદેવીના મંદિરો Ends ======-->
+<!--====== Campus Visit Start ======-->
+@*<section class="campus-visit-area-3">
+        <div class="container">
+            <div class="campus-visit-wrapper">
+                <div class="campus-content-col">
+                    <div class="campus-content">
+                        <h2 class="campus-title">Visit our Campus with image gallery</h2>
+                        <span class="line"></span>
+                        <p>Even slightly believable. If you are going use a passage of Lorem Ipsum need</p>
+                        <h3 class="video-title">or watch video</h3>
+                        <a class="play video-popup" href="https://www.youtube.com/watch?v=0qHWub21h5c"><i class="fas fa-play"></i> <span>Play now</span></a>
+                    </div>
+                </div>
+                <div class="campus-image-col">
+                    <div class="campus-image">
+                        <div class=" single-campus">
+                            <img src="~/theme/images/campus-1.jpg" alt="">
+                        </div>
+                        <div class="single-campus">
+                            <img src="~/theme/images/campus-1.jpg" alt="">
+                        </div>
+                        <div class="single-campus">
+                            <img src="~/theme/images/campus-1.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+
+<!--====== Campus Visit Ends ======-->
+<!--====== Counter Start ======-->
+@*<div class="counter-area-2">
+        <div class="container">
+            <div class="counter-wrapper-2 bg_cover" style="background-image: url(/theme/images/counter-bg-2.jpg);">
+                <div class="row">
+                    <div class="col-sm-3 col-6 counter-col">
+                        <div class="single-counter mt-30">
+                            <span class="counter-count"><span class="count">3652</span> +</span>
+                            <p>Students</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-6 counter-col">
+                        <div class="single-counter mt-30">
+                            <span class="counter-count"><span class="count">105</span> +</span>
+                            <p>Faculties</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-6 counter-col">
+                        <div class="single-counter mt-30">
+                            <span class="counter-count"><span class="count">120</span> +</span>
+                            <p>Branches</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-6 counter-col">
+                        <div class="single-counter mt-30">
+                            <span class="counter-count"><span class="count">30</span> +</span>
+                            <p>Awards win</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+<!--====== Counter Ends ======-->
+@*
+    <!--====== Teachers Start ======-->
+
+    <section class="teachers-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="section-title mt-40">
+                        <h2 class="title">સમિતિના સભ્યો</h2>
+                        <p>Even slightly believable. If you are going use a passage of Lorem Ipsum need</p>
+                    </div>
+                </div>
+            </div>
+            <div class="teachers-wrapper">
+                <div class="row teachers-row">
+                    <div class="col-md-4 col-sm-6 teachers-col">
+                        <div class="single-teacher mt-30 text-center">
+                            <div class="teacher-social">
+                                <ul class="social">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="teacher-image">
+                                <a href="teacher-details.html">
+                                    <img src="~/theme/images/teachers/teacher-1.jpg" alt="teacher">
+                                </a>
+                            </div>
+                            <div class="teacher-content">
+                                <h4 class="name"><a href="teacher-details.html">Roberto Carlos</a></h4>
+                                <span class="designation">Science Lecturor</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 teachers-col">
+                        <div class="single-teacher mt-30 text-center">
+                            <div class="teacher-social">
+                                <ul class="social">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="teacher-image">
+                                <a href="teacher-details.html">
+                                    <img src="~/theme/images/teachers/teacher-2.jpg" alt="teacher">
+                                </a>
+                            </div>
+                            <div class="teacher-content">
+                                <h4 class="name"><a href="teacher-details.html">Roberto Carlos</a></h4>
+                                <span class="designation">Science Lecturor</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 teachers-col">
+                        <div class="single-teacher mt-30 text-center">
+                            <div class="teacher-social">
+                                <ul class="social">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="teacher-image">
+                                <a href="teacher-details.html">
+                                    <img src="~/theme/images/teachers/teacher-3.jpg" alt="teacher">
+                                </a>
+                            </div>
+                            <div class="teacher-content">
+                                <h4 class="name"><a href="teacher-details.html">Roberto Carlos</a></h4>
+                                <span class="designation">Science Lecturor</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--====== Teachers Ends ======-->
+    <!--====== Testimonials Start ======-->
+
+    <section class="testimonials-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="testimonials-title">
+                        <h2 class="title">Our Students Review</h2>
+                        <span class="line"></span>
+                        <p>Even slightly believable. If you are going use a passage of Lorem Ipsum need desire to obtain pain of itself, because it is pain de sires to obtain pain of itself occur</p>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="testimonials-wrapper">
+                        <div class="testimonials-shape shape-1"></div>
+                        <div class="testimonials-shape shape-2"></div>
+                        <div class="testimonials-shape shape-3"></div>
+
+                        <div class="row no-gutters">
+                            <div class="col-lg-6 col-md-5">
+                                <div class="testimonials-image">
+                                    <div class="single-testimonial-image">
+                                        <img src="~/theme/images/testimonials-1.png" alt="">
+                                    </div>
+                                    <div class="single-testimonial-image">
+                                        <img src="~/theme/images/testimonials-2.png" alt="">
+                                    </div>
+                                    <div class="single-testimonial-image">
+                                        <img src="~/theme/images/testimonials-1.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-7">
+                                <div class="testimonials-content">
+                                    <div class="single-testimonial-content">
+                                        <div class="content-text">
+                                            <i class="fas fa-quote-right"></i>
+                                            <p>Best pleasure rationally encounter consequences that are very nice a again is there anyone who loves or desires to obtain pain of itself</p>
+                                        </div>
+                                        <div class="content-meta">
+                                            <p class="name">Alex Smith</p>
+                                            <p class="designation">CEO, Xelopex Group</p>
+                                        </div>
+                                    </div>
+                                    <div class="single-testimonial-content">
+                                        <div class="content-text">
+                                            <i class="fas fa-quote-right"></i>
+                                            <p>Best pleasure rationally encounter consequences that are very nice a again is there anyone who loves or desires to obtain pain of itself</p>
+                                        </div>
+                                        <div class="content-meta">
+                                            <p class="name">Alex Smith</p>
+                                            <p class="designation">CEO, Xelopex Group</p>
+                                        </div>
+                                    </div>
+                                    <div class="single-testimonial-content">
+                                        <div class="content-text">
+                                            <i class="fas fa-quote-right"></i>
+                                            <p>Best pleasure rationally encounter consequences that are very nice a again is there anyone who loves or desires to obtain pain of itself</p>
+                                        </div>
+                                        <div class="content-meta">
+                                            <p class="name">Alex Smith</p>
+                                            <p class="designation">CEO, Xelopex Group</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+
+<!--====== Testimonials Ends ======-->
+@section Scripts {
+
+}

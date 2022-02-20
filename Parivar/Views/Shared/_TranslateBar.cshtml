@@ -1,0 +1,54 @@
+﻿@*<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>*@
+<script type="text/javascript" src="~/adminTheme/assets/js/jquery.blockUI.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //blockPage();
+        //var googtrans = readCookie("googtrans");
+        //if (!googtrans) {
+        //    var defaultLang = "";
+        //    var ipDetails = localStorage.getItem("getIpDetails");
+        //    if (ipDetails) {
+        //        ipDetails = JSON.parse(ipDetails);
+        //        defaultLang = ipDetails.region.toLowerCase();
+        //        if (ipDetails.region_code === "GJ") {
+        //            createCookie("googtrans", "/en/gu");
+        //        }
+        //    }
+        //}
+    });
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            //layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+
+        // Native (but only works in browsers that support query selector)
+        if (typeof (document.querySelector) == 'function') {
+            document.querySelector('.goog-te-gadget').setAttribute('style', 'font-size: 0');
+        }
+
+        // If you have jQuery - works cross-browser - uncomment this
+        $('.goog-logo-link').css('display', 'none');
+        $('.goog-te-gadget').css('font-size', '0');
+
+        setTimeout(unblockPage(), 500);
+    }
+
+    function blockPage() {
+        $.blockUI(
+            {
+                baseZ: 9999,
+                message: '<img src = "/theme/images/logo.png" class="block-image"/>',
+                css: {
+                    width: "auto",
+                    border: "none !important", "border-radius": "5px",
+                    padding: "6px",
+                    left: "45.2%",
+                }
+            });
+    }
+
+    function unblockPage() {
+        $.unblockUI();
+    }
+</script>

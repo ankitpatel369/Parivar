@@ -1,0 +1,109 @@
+﻿@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer[LocalizationConstant.OurCommittee];
+}
+<!--====== Page Banner Start ======-->
+@section Styles{
+    <style type="text/css">
+        .single-teacher::before {
+            background-color: transparent !important;
+        }
+    </style>
+}
+<section class="page-banner">
+    <div class="page-banner-bg bg_cover" style="background-image: url(/theme/images/page-banner.jpg);">
+        <div class="container">
+            <div class="banner-content text-center">
+                <h2 class="title">@Localizer[LocalizationConstant.OurCommittee]</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--====== Page Banner Ends ======-->
+<!--====== Teachers Start ======-->
+
+<section class="teachers-page">
+    <div class="container">
+        <div class="row teachers-row">
+            <div class="col-md-4 col-sm-6 teachers-col">
+                <div class="single-teacher mt-80 text-center">
+                    <div class="teacher-image">
+                        <a href="javascript:;" class="myInfo">
+                            <img src="~/theme/images/teachers/user.png" alt="teacher">
+                        </a>
+                    </div>
+                    <div class="teacher-content">
+                        <h4 class="name"><a href="javascript:;">રાજુ ભાઈ</a></h4>
+                        <span class="designation">રાણીંગપરા</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 teachers-col">
+                <div class="single-teacher mt-80 text-center">
+                    <div class="teacher-image">
+                        <a href="javascript:;">
+                            <img src="~/theme/images/teachers/user.png" alt="teacher">
+                        </a>
+                    </div>
+                    <div class="teacher-content">
+                        <h4 class="name"><a href="javascript:;">સંજય ભાઈ</a></h4>
+                        <span class="designation">દોલતી</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 teachers-col">
+                <div class="single-teacher mt-80 text-center">
+                    <div class="teacher-image">
+                        <a href="javascript:;">
+                            <img src="~/theme/images/teachers/user.png" alt="teacher">
+                        </a>
+                    </div>
+                    <div class="teacher-content">
+                        <h4 class="name"><a href="javascript:;">ભરત ભાઈ</a></h4>
+                        <span class="designation">પરબડી</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 teachers-col">
+                <div class="single-teacher mt-80 text-center">
+                    <div class="teacher-image">
+                        <a href="javascript:;">
+                            <img src="~/theme/images/teachers/user.png" alt="teacher">
+                        </a>
+                    </div>
+                    <div class="teacher-content">
+                        <h4 class="name"><a href="javascript:;">સંજય ભાઈ</a></h4>
+                        <span class="designation">વીરપુર</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 teachers-col">
+                <div class="single-teacher mt-80 text-center">
+                    @*<div class="teacher-social">
+                            <ul class="social">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>*@
+                    <div class="teacher-image">
+                        <a href="javascript:;">
+                            <img src="~/theme/images/teachers/user.png" alt="teacher">
+                        </a>
+                    </div>
+                    <div class="teacher-content">
+                        <h4 class="name"><a href="javascript:;">શિવલાલ ભાઈ</a></h4>
+                        <span class="designation">વાંકિયા</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--====== Teachers Ends ======-->
+@section Scripts {
+}

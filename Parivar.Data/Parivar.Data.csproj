@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20210724182622_ChangeFamilyMemberTable.cs" />
+    <Compile Remove="Migrations\20210724182622_ChangeFamilyMemberTable.Designer.cs" />
+    <Compile Remove="Migrations\20210724183051_ChangeFamilyMemberTable.cs" />
+    <Compile Remove="Migrations\20210724183051_ChangeFamilyMemberTable.Designer.cs" />
+    <Compile Remove="Migrations\20211128044015_UpdateFaMembersTable.cs" />
+    <Compile Remove="Migrations\20211128044015_UpdateFaMembersTable.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.4" />
+  </ItemGroup>
+
+</Project>

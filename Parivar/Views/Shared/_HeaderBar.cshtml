@@ -1,0 +1,208 @@
+﻿@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{ var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var curculture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+    string curuiculture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name;
+
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = Localizer.GetString(c.Name) })
+        .ToList();
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}{Context.Request.QueryString}"; }
+
+<style type="text/css">
+    /*.goog-te-banner-frame.skiptranslate {
+        display: none !important;
+    }
+
+    goog-tooltip skiptranslate {
+        display: none !important;
+    }
+
+    skiptranslate {
+        background-color: transparent;
+    }
+
+    body {
+        position: inherit !important;
+        min-height: inherit !important;
+        top: inherit !important;
+    }*/
+
+    .left-side {
+        width: inherit;
+    }
+
+    .goog-text-highlight {
+        background-color: inherit;
+        -webkit-box-shadow: inherit;
+        -moz-box-shadow: inherit;
+        box-shadow: inherit;
+        box-sizing: inherit;
+        -webkit-box-sizing: inherit;
+        -moz-box-sizing: inherit;
+        position: inherit;
+    }
+
+    .goog-te-banner-frame.skiptranslate {
+        display: none !important;
+    }
+
+    .goog-te-combo {
+        width: auto;
+    }
+
+    body {
+        top: 0px !important;
+    }
+
+    #goog-gt-tt {
+        display: none !important;
+        top: 0px !important;
+    }
+
+    .goog-tooltip skiptranslate {
+        display: none !important;
+        top: 0px !important;
+    }
+
+    .activity-root {
+        display: none !important;
+    }
+
+    .status-message {
+        display: none !important;
+    }
+
+    .started-activity-container {
+        display: none !important;
+    }
+
+    div#google_translate_element {
+        width: auto;
+    }
+
+        div#google_translate_element div.goog-te-gadget-simple {
+            background-color: green;
+        }
+
+            div#google_translate_element div.goog-te-gadget-simple a.goog-te-menu-value span {
+                color: yellow
+            }
+
+                div#google_translate_element div.goog-te-gadget-simple a.goog-te-menu-value span:hover {
+                    color: #ffffff
+                }
+
+    .goog-te-gadget .goog-te-combo {
+        margin: -5px !important;
+        font-size: 13px;
+        background-color: #07294d;
+        border-color: #07294d;
+        color: #fff;
+    }
+
+    .header-top-wrapper .header-top-right .header-link a + a:last-child {
+        margin-left: 10px;
+    }
+
+    @@media (max-width: 767px) {
+        .goog-te-gadget .goog-te-combo {
+            margin-top: 8px !important;
+        }
+    }
+
+    .goog-te-combo option {
+        background-color: #fff;
+        color: black;
+    }
+</style>
+
+<!--====== Header Start ======-->
+
+<div class="header-top">
+    <div class="container">
+        <div class="header-top-wrapper d-flex flex-wrap justify-content-sm-between">
+            <div class="header-top-left mt-10">
+                <ul class="header-meta">
+                    <li><a href="mailto://info@chodavadiyaparivar.com">info@chodavadiyaparivar.com</a></li>
+                </ul>
+            </div>
+            <div class="header-top-right mt-10">
+                <div class="header-link">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole(Parivar.Dto.Enum.UserRoles.SystemAdmin))
+                        {
+                            <a class="login" href="/Admin/Dashboard">@Localizer[LocalizationConstant.AdminDashboard]</a> 
+                        }
+                        else
+                        {
+                            <a class="login" href="/Member/Dashboard">@Localizer[LocalizationConstant.Dashboard]</a> 
+                        }
+                    }
+                    else
+                    {
+                            <a class="login" href="/Account/Login">@Localizer[LocalizationConstant.Login]</a>
+                            <a class="register" href="/Home/AddFamily">@Localizer[LocalizationConstant.RegisterFamily] &nbsp;&nbsp;&nbsp; <span style="color:#8d8d8d;">|</span></a>
+                    }
+
+                    <a class="notice">
+                        <div title="@requestCulture?.Provider?.GetType().Name">
+                            <form id="selectLanguage"
+                                  asp-controller="Home"
+                                  asp-action="SetLanguage"
+                                  asp-route-returnUrl="@returnUrl"
+                                  method="post"
+                                  class="form-horizontal nav-link text-dark"
+                                  role="form">
+                                <select id="culture" title="Select Language" name="culture"
+                                        onchange="this.form.submit();"
+                                        asp-for="@requestCulture.RequestCulture.UICulture.Name"
+                                        asp-items="cultureItems">
+                                </select>
+                            </form>
+                        </div>
+                        @*<div id="google_translate_element" class="gte clearfix"></div>*@
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="navigation" class="navigation navigation-landscape">
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <div class="col-lg-3">
+                <div class="header-logo">
+                    <a href="/"><img src="/theme/images/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-7 position-static">
+                <div class="nav-toggle"></div>
+                <nav class="nav-menus-wrapper">
+                    <ul class="nav-menu">
+                        <li><a class="active notranslate" href="/">@Localizer[LocalizationConstant.Home]</a></li>
+                        <li><a href="/Home/AboutUs">@Localizer[LocalizationConstant.AboutUs]</a></li>
+                        <li><a href="/Parivar/Events">@Localizer[LocalizationConstant.Events]</a></li>
+                        <li><a href="/Parivar/Gallerys/">@Localizer[LocalizationConstant.Gallerys]</a></li>
+                        <li><a href="/Parivar/Business/">@Localizer[LocalizationConstant.Business]</a></li>
+                        <li><a href="/Parivar/Committees">@Localizer[LocalizationConstant.Committees]</a></li>
+                        <li><a href="/Home/ContactUs">@Localizer[LocalizationConstant.Contact]</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-2 position-static">
+                <div class="header-search">
+                    <form action="#">
+                        <input type="text" placeholder="Search">
+                        <button><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

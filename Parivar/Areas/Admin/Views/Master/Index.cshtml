@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+
+@section PageTitle{
+    <li class="active">Contact Us</li>
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Contact Us</h3>
+            </div>
+            <div class="card-body">
+                <table id="dtContactUs" class="table table-striped table-bordered dt-responsive  nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr role="row" class="title_datatable">
+                            <th>Action</th>
+                            <th>Full Name</th>
+                            <th>Subject</th>
+                            <th>Created Date</th>
+                            <th>Modified Date</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> <!-- End Row -->
+
+
+@section PageScripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            BindContactUsList();
+        });
+
+        function BindContactUsList() {
+            if ($.fn.DataTable.isDataTable("#dtContactUs")) {
+                $("#dtContactUs").dataTable().fnDestroy();
+            }
+            const contactUs = $("#dtContactUs").DataTable({
+                "sAjaxSource": "/Admin/Master/GetContactUsList",
+                "columns": [
+                    {
+                        "data": "id",
+                        "autoWidth": false,
+                        "searchable": false,
+                        "orderable": false,
+                        "render": function (data, type, row) {
+                            const content = `<li><a href="javascript:;" ${row.isRead ? dataParams("Mark As Read", "read", data) : dataParams("Mark As UnRead", "unread", data)} class="dropdown-item action"><i class="fa fa-${row.isRead ? 'eye' : 'eye-slash'}" aria-hidden="true"></i> ${row.isRead ? 'Mark As Read' : 'Mark As UnRead'}</a></li>
+                                             <li><a href="javascript:;" ${dataParams("View", "view", data)} class="dropdown-item action"><i class="fa fa-info-circle" aria-hidden="true"></i> View Details</a></li>`;
+                            return dataTableAction(content);
+                        }
+                    },
+                    {
+                        "data": "fullName",
+                        "autoWidth": false,
+                        "searchable": true
+                    },
+                    {
+                        "data": "subject",
+                        "autoWidth": false,
+                        "searchable": true
+                    },
+                    {
+                        "data": "dateCreated",
+                        "autoWidth": false,
+                        "searchable": true
+                    },
+                    {
+                        "data": "dateModified",
+                        "autoWidth": false,
+                        "searchable": true
+                    }
+                ]
+            });
+        }
+
+        $('#dtContactUs').on("click", ".action", function (e) {
+            const flag = $(e.currentTarget).data("flag");
+            const id = $(e.currentTarget).data("id");
+            switch (flag) {
+                case "read":
+                    readUnReadContact(id);
+                    break;
+                case "unread":
+                    readUnReadContact(id);
+                    break;
+                case "view":
+                    viewContactDetails(id);
+                    break;
+                default:
+            }
+        });
+        function readUnReadContact(id) {
+            $.post("/Admin/Master/ReadContactUs", { id: id }).done(function (res) {
+                Parivar.HandleResponse(response);
+            });
+        }
+        function viewContactDetails(id) {
+            const newUrl = `/Admin/Master/ContactUsDetails?id=${id}`;
+            $("#modalContent").load(newUrl, function () {
+                showModal();
+            });
+        }
+    </script>
+}

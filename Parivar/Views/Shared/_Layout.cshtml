@@ -1,0 +1,72 @@
+﻿<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <!-- Basic Page Needs ================================================== -->
+    <meta charset="utf-8">
+
+    <!--====== Title ======-->
+    <title>@ViewData["Title"] - પરિવાર</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- favicon -->
+    <partial name="_Favicon.cshtml" />
+    <style type="text/css">
+        .header-logo {
+            max-width: 100px;
+        }
+
+        @@media (max-width: 767px) {
+            .header-logo {
+                max-width: 60px;
+            }
+        }
+    </style>
+    @RenderSection("Styles", required: false)
+    <link rel="stylesheet" href="~/theme/css/vendor/plugins.min.css">
+    <link rel="stylesheet" href="~/theme/css/style.min.css">
+</head>
+<body>
+
+    <!-- Header Container -->
+    <header class="header-area">
+        <partial name="~/Views/Shared/_HeaderBar.cshtml" />
+    </header>
+    <!-- Header Container / End -->
+    <!-- Body Content-->
+    @RenderBody()
+    <!-- Body Content / End -->
+    <!-- Footer Bar -->
+    <partial name="~/Views/Shared/_FooterBar.cshtml" />
+    <!-- Footer / End -->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top"><i class="fal fa-chevron-up"></i></a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!-- Scripts -->
+    <script src="~/theme/js/vendor/jquery-3.5.1.min.js"></script>
+    <script src="~/theme/js/vendor/modernizr-3.7.1.min.js"></script>
+
+
+    <!--====== All Plugins js ======-->
+    <!-- <script src="~/theme/js/plugins/popper.min.js"></script>
+         <script src="~/theme/js/plugins/bootstrap.min.js"></script>
+         <script src="~/theme/js/plugins/slick.min.js"></script>
+         <script src="~/theme/js/plugins/jquery.magnific-popup.min.js"></script>
+         <script src="~/theme/js/plugins/jquery.appear.min.js"></script>
+         <script src="~/theme/js/plugins/imagesloaded.pkgd.min.js"></script>
+         <script src="~/theme/js/plugins/isotope.pkgd.min.js"></script>
+         <script src="~/theme/js/plugins/wow.min.js"></script>
+    <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
+
+    <script src="~/theme/js/plugin.min.js"></script>
+
+
+    <!--====== Main Activation  js ======-->
+    <script src="~/theme/js/main.js"></script>
+
+    <partial name="_ValidationScriptsPartial.cshtml" />
+    @RenderSection("Scripts", required: false)
+    <partial name="_TranslateBar.cshtml" />
+</body>
+</html>
+

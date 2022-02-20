@@ -1,0 +1,302 @@
+﻿@inject IViewLocalizer Localizer
+@model Parivar.Dto.ViewModel.FamilyModel
+@{
+    ViewData["Title"] = Localizer[LocalizationConstant.MemberRegistrationForm];
+}
+@section Styles{
+    <link href="~/lib/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="~/lib/plugins/select2/css/select2.css" rel="stylesheet" />
+    <link href="~/lib/plugins/toastr/toastr.css" rel="stylesheet" />
+    <style type="text/css">
+        .single-form textarea {
+            height: auto !important;
+            padding-top: 15px;
+            resize: initial;
+        }
+
+        .select {
+            display: none !important;
+        }
+
+        .select2-container--default .select2-selection--single {
+            border: inherit;
+        }
+
+        .select2-container {
+            border: 1px solid #aaa !important;
+        }
+    </style>
+}
+<section class="contact-area">
+    <div class="container">
+        <div class="contact-form">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="contact-title text-center">
+                        <h3 class="title">@Localizer[LocalizationConstant.MemberRegistrationForm]</h3>
+                        @*<p>Here is our event schedule where you can get information about time schedule about this event so it's very easy for you to manage your time and schedule</p>*@
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="contact-form-wrapper">
+                        <form id="frmAddFamily">
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="single-form">
+                                        <label>@Localizer[LocalizationConstant.MainMember]</label>
+                                        <input asp-for="FirstName" type="text" />
+                                        <span asp-validation-for="FirstName" class="text-danger mb-2"></span>
+                                        <div class="single-form">
+                                            <input asp-for="LastName" type="hidden" value="Chodavadiya" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="single-form">
+                                        <label>@Localizer[LocalizationConstant.FatherName]</label>
+                                        <input asp-for="FatherName" type="text" />
+                                        <span asp-validation-for="FatherName" class="text-danger mb-2"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="single-form">
+                                        <label>@Localizer[LocalizationConstant.ResidentialAddress]</label>
+                                        <textarea asp-for="ResidentAddress" cols="5"></textarea>
+                                        <span asp-validation-for="ResidentAddress" class="text-danger mb-2"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="single-form">
+                                        <label>@Localizer[LocalizationConstant.Country]</label>
+                                        <br />
+                                        <select asp-for="CountryId" class="select2 form-control" data-label="@Localizer[LocalizationConstant.Country]"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-form">
+                                        <label>@Localizer[LocalizationConstant.State]</label>
+                                        <br />
+                                        <select asp-for="StateId" class="select2 form-control" data-label="@Localizer[LocalizationConstant.State]"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-form">
+                                        <label>@Localizer[LocalizationConstant.City]</label>
+                                        <br />
+                                        <select asp-for="CityId" class="select2 form-control" data-label="@Localizer[LocalizationConstant.City]"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-10">
+                                <div class="col-md-4 mb-1">
+                                    <div class="single-form">
+                                        <label>@Localizer[LocalizationConstant.District]</label>
+                                        <br />
+                                        <select asp-for="DistrictId" class="select2 form-control" data-label="@Localizer[LocalizationConstant.District]"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-form">
+                                        <label>@Localizer[LocalizationConstant.Taluk]</label>
+                                        <br />
+                                        <select asp-for="CountyId" class="select2 form-control" data-label="@Localizer[LocalizationConstant.Taluk]"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-form">
+                                        <label>@Localizer[LocalizationConstant.Village]</label>
+                                        <br />
+                                        <select asp-for="VillageId" class="select2 form-control" data-label="@Localizer[LocalizationConstant.Village]"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-20">
+                                <div class="col-md-3">
+                                    <div class="single-form">
+                                        <label>@Localizer[LocalizationConstant.MobileNumber]</label>
+                                        <input asp-for="PhoneNumber" type="tel" />
+                                        <span asp-validation-for="PhoneNumber" class="text-danger mb-2"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="single-form">
+                                        <label>@Localizer[LocalizationConstant.Email]</label>
+                                        <input asp-for="Email" type="email" />
+                                        <span asp-validation-for="Email" class="text-danger mb-2"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="single-form">
+                                        <label>@Localizer[LocalizationConstant.Gender]</label>
+                                        <br />
+                                        <select class="select2 form-control" data-label="@Localizer[LocalizationConstant.Gender]" asp-for="Gender" asp-items="ViewBag.GenderList as IEnumerable<SelectListItem>">
+                                        </select>
+                                        <span asp-validation-for="Gender" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="single-form">
+                                        <label>@Localizer[LocalizationConstant.TotalMembersInHouse]</label>
+                                        <input asp-for="NoOfMembers" type="text" value="" />
+                                        <span asp-validation-for="NoOfMembers" class="text-danger mb-2"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-10">
+                                <div class="col-md-12 pt-2" id="NoOfMembersArea"></div>
+                                <p class="form-message"></p>
+                                <div class="col-md-12">
+                                    <div class="single-form text-center">
+                                        <button id="btnSaveFamily" type="button" class="main-btn">@Localizer[LocalizationConstant.Submit]</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script src="~/lib/plugins/select2/js/select2.js"></script>
+    <script src="~/lib/plugins/toastr/toastr.min.js"></script>
+    <script src="~/lib/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript">
+        $.fn.datepicker.defaults.format = "M/dd/yyyy";
+        $.fn.datepicker.defaults.autoclose = true;
+        var select2Width = 370;
+        if (/Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            select2Width = 345;
+            $('#frmAddFamily  > div.row > div.col-md-4').addClass("mb-2");
+        }
+        $('.select2').select2({ width: '100%' });
+        $(document).ajaxComplete(function () {
+            $.validator.unobtrusive.parse(document);
+        });
+
+        $(document).ready(function () {
+            getWorldDbList(0, 1).done(function (response) {
+                renderDropdown("#CountryId", response);
+                renderDropdown("#StateId", null);
+                renderDropdown("#CityId", null);
+                getWorldDbList(0, 4).done(function (response) {
+                    renderDropdown("#DistrictId", response);
+                    renderDropdown("#CountyId", null);
+                    renderDropdown("#VillageId", null);
+                });
+            });
+        });
+
+        $("#CountryId").select2({ placeholder: "-- @Localizer[LocalizationConstant.Country] --" }).on('change', function () {
+            var selectedValue = $(this).val();
+            renderDropdown("#StateId", null);
+            renderDropdown("#CityId", null);
+            getWorldDbList(selectedValue, 2).done(function (result) {
+                renderDropdown("#StateId", result);
+            });
+        });
+
+        $("#StateId").select2({ placeholder: "-- @Localizer[LocalizationConstant.State] --" }).on('change', function () {
+            var selectedValue = $(this).val();
+            renderDropdown("#CityId", null);
+            getWorldDbList(selectedValue, 3).done(function (result) {
+                renderDropdown("#CityId", result);
+            });
+        });
+
+        $("#DistrictId").select2({ placeholder: "-- @Localizer[LocalizationConstant.District] --" }).on('change', function () {
+            var selectedValue = $(this).val();
+            renderDropdown("#CountyId", null);
+            renderDropdown("#VillageId", null);
+            getWorldDbList(selectedValue, 5).done(function (result) {
+                renderDropdown("#CountyId", result);
+            });
+        });
+
+        $("#CountyId").select2({ placeholder: "-- @Localizer[LocalizationConstant.Taluk] --" }).on('change', function () {
+            var selectedValue = $(this).val();
+            renderDropdown("#VillageId", null);
+            getWorldDbList(selectedValue, 6).done(function (result) {
+                renderDropdown("#VillageId", result);
+            });
+        });
+
+        $("#NoOfMembers").change(function (e) {
+            var id = parseInt($(e.currentTarget).val());
+            $("#NoOfMembersArea").load("/Home/AddNoOfFamilyMembers/" + id, function (e) {
+                $('.DateOfBirth').datepicker();
+                $('.RelationShip, .IsMarried, .BloodGroup, .Education, .Bussioness, .Gender').select2({ width: '100%' });
+                rebindvalidators();
+            });
+        });
+
+        function rebindvalidators() {
+            var $form = $("#frmAddFamily");
+            $form.unbind();
+            $form.data("validator", null);
+            $.validator.unobtrusive.parse($form);
+            $form.validate($form.data("unobtrusiveValidation").options);
+        }
+
+        $("#btnSaveFamily").click(function () {
+            var $form = $('#frmAddFamily');
+            $.validator.unobtrusive.parse("[data-val-required]");
+            //$.validator.unobtrusive.parse($form);
+
+            if ($form.valid()) {
+                $.post("/Home/AddFamily", $form.serialize(), function (response) {
+                    if (response.status === 1) {
+                        Parivar.HandleResponse(response, true, function () {
+                            window.location.href = "/";
+                        });
+                    } else {
+                        Parivar.HandleResponse(response);
+                    }
+                });
+            }
+        });
+
+        function getWorldDbList(id, types) {
+            return $.ajax({
+                url: "/Home/GetWorldDbList/",
+                type: "GET",
+                data: { 'id': id, 'types': types },
+                dataType: "json",
+                traditional: true,
+                contentType: "application/json; charset=utf-8"
+            });
+        }
+
+        function getRelationShipList(id, types) {
+            return $.ajax({
+                url: "/Home/GetRelationShipList/",
+                type: "GET",
+                dataType: "json",
+                traditional: true,
+                contentType: "application/json; charset=utf-8"
+            });
+        }
+
+        function renderDropdown(id, result) {
+            var label = $(id).data('label');
+            $(id).empty();
+
+            //var label = id.replace("Id", "").replace("#", "");
+            //label = (label == "County" ? "Taluk" : label);
+            $("<option>", { text: "--" + label + " --", value: "" }).html("-- " + label + " --").appendTo(id);
+
+            if (result != null) {
+                $.each(result.data, function (key, val) {
+                    $("<option>", { text: val.text, value: val.value, dataExtra: val.extra }).html(val.text).appendTo(id);
+                });
+            }
+        }
+    </script>
+}

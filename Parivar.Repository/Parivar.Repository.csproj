@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Parivar.Data\Parivar.Data.csproj" />
+    <ProjectReference Include="..\Parivar.Dto\Parivar.Dto.csproj" />
+  </ItemGroup>
+
+</Project>
