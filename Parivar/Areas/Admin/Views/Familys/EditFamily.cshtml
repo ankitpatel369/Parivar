@@ -28,12 +28,12 @@
                 </li>
                 @for (int i = 0; i < Model.FamilyMemberDetails.Count; i++)
                 {
-                    <li class="nav-item tab">
-                        <a class="nav-link" id="Member-@(i)" data-toggle="tab" href="#tab@(i)" role="tab" aria-controls="Member @(i+1)" aria-selected="false">
-                            <span class="d-block d-sm-none"><i class="fa fa-home"></i></span>
-                            <span class="d-none d-sm-block">Member @(i+1)</span>
-                        </a>
-                    </li>
+                <li class="nav-item tab">
+                    <a class="nav-link" id="Member-@(i)" data-toggle="tab" href="#tab@(i)" role="tab" aria-controls="Member @(i+1)" aria-selected="false">
+                        <span class="d-block d-sm-none"><i class="fa fa-home"></i></span>
+                        <span class="d-none d-sm-block">Member @(i+1)</span>
+                    </a>
+                </li>
                 }
                 <div class="indicator"></div>
             </ul>
@@ -109,114 +109,114 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button id="btnSaveFamily" class="btn btn-primary waves-effect waves-light w-md" type="button">Save</button>
+                                <button class="btn SaveFamily btn-primary waves-effect waves-light w-md" type="button">Save</button>
 
                             </div>
                         </div>
                     </div>
                     @for (int i = 0; i < Model.FamilyMemberDetails.Count; i++)
                     {
-                        <div class="tab-pane" id="tab@(i)" aria-labelledby="Member-@(i)">
-                            <div class="card card-default card-fill">
-                                <div class="card-header">
-                                    <h3 class="card-title">Edit Profile</h3>
+                    <div class="tab-pane" id="tab@(i)" aria-labelledby="Member-@(i)">
+                        <div class="card card-default card-fill">
+                            <div class="card-header">
+                                <h3 class="card-title">Edit Profile</h3>
+                            </div>
+                            <div class="card-body">
+                                <input type="hidden" asp-for="FamilyMemberDetails[i].Id" />
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Localizer[LocalizationConstant.MemberName]</label>
+                                            <input asp-for="FamilyMemberDetails[i].FullName" type="text" class="form-control" />
+                                            <span asp-validation-for="FamilyMemberDetails[i].FullName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Localizer[LocalizationConstant.RelationshipWithMainMember]</label>
+                                            <select class="form-control" data-label="@Localizer[LocalizationConstant.Relationship]" asp-for="FamilyMemberDetails[i].RelationShipId" asp-items="ViewBag.RelationShipList as IEnumerable<SelectListItem>">
+                                            </select>
+                                            <span asp-validation-for="FamilyMemberDetails[i].RelationShipId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Localizer[LocalizationConstant.BirthDate]</label>
+                                            <input asp-for="FamilyMemberDetails[i].DateOfBirthInStr" type="text" class="DateOfBirth form-control" data-birth="@Model.FamilyMemberDetails[i].DateOfBirthInStr" />
+                                            <span asp-validation-for="FamilyMemberDetails[i].DateOfBirthInStr" class="text-danger"></span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <input type="hidden" asp-for="FamilyMemberDetails[i].Id" />
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>@Localizer[LocalizationConstant.MemberName]</label>
-                                                <input asp-for="FamilyMemberDetails[i].FullName" type="text" class="form-control" />
-                                                <span asp-validation-for="FamilyMemberDetails[i].FullName" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>@Localizer[LocalizationConstant.RelationshipWithMainMember]</label>
-                                                <select class="form-control" data-label="@Localizer[LocalizationConstant.Relationship]" asp-for="FamilyMemberDetails[i].RelationShipId" asp-items="ViewBag.RelationShipList as IEnumerable<SelectListItem>">
-                                                </select>
-                                                <span asp-validation-for="FamilyMemberDetails[i].RelationShipId" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>@Localizer[LocalizationConstant.BirthDate]</label>
-                                                <input asp-for="FamilyMemberDetails[i].DateOfBirthInStr" type="text" class="DateOfBirth form-control" data-birth="@Model.FamilyMemberDetails[i].DateOfBirthInStr" />
-                                                <span asp-validation-for="FamilyMemberDetails[i].DateOfBirthInStr" class="text-danger"></span>
-                                            </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Localizer[LocalizationConstant.BloodGroup]</label>
+                                            <br />
+                                            <select class="notranslate form-control" data-label="@Localizer[LocalizationConstant.BloodGroup]" asp-for="FamilyMemberDetails[i].BloodGroupId" asp-items="ViewBag.BloodGroupList as IEnumerable<SelectListItem>">
+                                            </select>
+                                            <span asp-validation-for="FamilyMemberDetails[i].BloodGroupId" class="text-danger"></span>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>@Localizer[LocalizationConstant.BloodGroup]</label>
-                                                <br />
-                                                <select class="notranslate form-control" data-label="@Localizer[LocalizationConstant.BloodGroup]" asp-for="FamilyMemberDetails[i].BloodGroupId" asp-items="ViewBag.BloodGroupList as IEnumerable<SelectListItem>">
-                                                </select>
-                                                <span asp-validation-for="FamilyMemberDetails[i].BloodGroupId" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>@Localizer[LocalizationConstant.Gender]</label>
-                                                <br />
-                                                <select class="notranslate form-control" data-label="@Localizer[LocalizationConstant.Gender]" asp-for="FamilyMemberDetails[i].Gender" asp-items="ViewBag.GenderList as IEnumerable<SelectListItem>">
-                                                </select>
-                                                <span asp-validation-for="FamilyMemberDetails[i].Gender" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>@Localizer[LocalizationConstant.Married]</label>
-                                                <br />
-                                                <select asp-for="FamilyMemberDetails[i].IsMarried" class="form-control" data-label="@Localizer[LocalizationConstant.Married]">
-                                                    <option value="true">@Localizer[LocalizationConstant.Yes]</option>
-                                                    <option value="false">@Localizer[LocalizationConstant.No]</option>
-                                                </select>
-                                                <span asp-validation-for="FamilyMemberDetails[i].IsMarried" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>@Localizer[LocalizationConstant.EducationStudy]</label>
-                                                <br />
-                                                <select class="form-control" data-label="@Localizer[LocalizationConstant.EducationStudy]" asp-for="FamilyMemberDetails[i].EducationId" asp-items="ViewBag.EducationList as IEnumerable<SelectListItem>">
-                                                </select>
-                                                <span asp-validation-for="FamilyMemberDetails[i].EducationId" class="text-danger"></span>
-                                            </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>@Localizer[LocalizationConstant.Gender]</label>
+                                            <br />
+                                            <select class="notranslate form-control" data-label="@Localizer[LocalizationConstant.Gender]" asp-for="FamilyMemberDetails[i].Gender" asp-items="ViewBag.GenderList as IEnumerable<SelectListItem>">
+                                            </select>
+                                            <span asp-validation-for="FamilyMemberDetails[i].Gender" class="text-danger"></span>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>@Localizer[LocalizationConstant.Business]</label>
-                                                <br />
-                                                <select class="form-control" data-label="@Localizer[LocalizationConstant.Business]" asp-for="FamilyMemberDetails[i].BussionessId" asp-items="ViewBag.BusinessList as IEnumerable<SelectListItem>">
-                                                </select>
-                                                <span asp-validation-for="FamilyMemberDetails[i].BussionessId" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>@Localizer[LocalizationConstant.SurnameOfMosal]</label>
-                                                <input asp-for="FamilyMemberDetails[i].MosalSurname" type="text" class="form-control" />
-                                                <span asp-validation-for="FamilyMemberDetails[i].MosalSurname" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>@Localizer[LocalizationConstant.MosalVillage]</label>
-                                                <input asp-for="FamilyMemberDetails[i].MosalVillage" type="text" class="form-control" />
-                                                <span asp-validation-for="FamilyMemberDetails[i].MosalVillage" class="text-danger"></span>
-                                            </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>@Localizer[LocalizationConstant.Married]</label>
+                                            <br />
+                                            <select asp-for="FamilyMemberDetails[i].IsMarried" class="form-control" data-label="@Localizer[LocalizationConstant.Married]">
+                                                <option value="true">@Localizer[LocalizationConstant.Yes]</option>
+                                                <option value="false">@Localizer[LocalizationConstant.No]</option>
+                                            </select>
+                                            <span asp-validation-for="FamilyMemberDetails[i].IsMarried" class="text-danger"></span>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Localizer[LocalizationConstant.EducationStudy]</label>
+                                            <br />
+                                            <select class="form-control" data-label="@Localizer[LocalizationConstant.EducationStudy]" asp-for="FamilyMemberDetails[i].EducationId" asp-items="ViewBag.EducationList as IEnumerable<SelectListItem>">
+                                            </select>
+                                            <span asp-validation-for="FamilyMemberDetails[i].EducationId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Localizer[LocalizationConstant.Business]</label>
+                                            <br />
+                                            <select class="form-control" data-label="@Localizer[LocalizationConstant.Business]" asp-for="FamilyMemberDetails[i].BussionessId" asp-items="ViewBag.BusinessList as IEnumerable<SelectListItem>">
+                                            </select>
+                                            <span asp-validation-for="FamilyMemberDetails[i].BussionessId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Localizer[LocalizationConstant.SurnameOfMosal]</label>
+                                            <input asp-for="FamilyMemberDetails[i].MosalSurname" type="text" class="form-control" />
+                                            <span asp-validation-for="FamilyMemberDetails[i].MosalSurname" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Localizer[LocalizationConstant.MosalVillage]</label>
+                                            <input asp-for="FamilyMemberDetails[i].MosalVillage" type="text" class="form-control" />
+                                            <span asp-validation-for="FamilyMemberDetails[i].MosalVillage" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                    <button id="btnSaveFamily" class="btn btn-primary waves-effect waves-light w-md" type="button">Save</button>
-                                </div>
+                                <button class="btn SaveFamily btn-primary waves-effect waves-light w-md" type="button">Save</button>
                             </div>
                         </div>
+                    </div>
                     }
                 </div>
             </form>
@@ -228,8 +228,8 @@
 
 @section PageScripts {
     <partial name="_ValidationScriptsPartial.cshtml" />
-<script src="~/lib/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript">
+    <script src="~/lib/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript">
     $.fn.datepicker.defaults.format = "M/dd/yyyy";
     $.fn.datepicker.defaults.autoclose = true;
     $(document).ready(function () {
@@ -250,9 +250,9 @@
         $($(href).find(".DateOfBirth")).datepicker("setDate" , dateOfBirth)
     });
 
-   $("#btnSaveFamily").click(function () {
+    $(document).on("click", ".SaveFamily", function () {
         var $form = $('#frmEditFamily');
-        $.validator.unobtrusive.parse("[data-val-required]");
+        //$.validator.unobtrusive.parse("[data-val-required]");
 
         if ($form.valid()) {
             $.post("/Admin/Familys/EditFamily", $form.serialize(), function (response) {
@@ -282,5 +282,5 @@
             }
         }
     }
-</script>
+    </script>
 }
