@@ -1,0 +1,53 @@
+﻿@model Parivar.Dto.ViewModel.DistrictModel
+@{
+    Layout = null;
+}
+<div class="modal-header">
+    <h4 class="modal-title mt-0">@(Model.Id == 0 ? "Add" : "Edit") District</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form id="frmDistrict">
+        @Html.AntiForgeryToken()
+        <input asp-for="Id" type="hidden" class="form-control">
+        <input asp-for="StateId" type="hidden" class="form-control">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="SortName" class="control-label">State Name</label>
+                    <h2>@Model.State</h2>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="Name" class="control-label">Name</label>
+                    <input asp-for="Name" type="text" class="form-control">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+    <button type="button" id="btnSave" class="btn btn-info waves-effect waves-light">Save</button>
+</div>
+<partial name="~/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml" />
+<script type="text/javascript">
+
+    $("#btnSave").click(function () {
+        var $form = $('#frmDistrict');
+        $.validator.unobtrusive.parse($form);
+        if ($form.valid()) {
+            $.post("/Admin/WorldDb/AddEditDistrict", $form.serialize(),function(response) {
+                if (response.status === 1) {
+                    Parivar.HandleResponse(response);
+                    closeModal();
+                    BindDistrictList();
+                }
+             });
+            }
+        });
+</script>

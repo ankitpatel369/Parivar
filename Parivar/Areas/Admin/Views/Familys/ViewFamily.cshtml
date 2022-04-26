@@ -13,7 +13,7 @@
                 <table id="dtFamilys" class="table table-striped table-bordered dt-responsive  nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr role="row" class="title_datatable">
-                            @*<th>Action</th>*@
+                            <th>Action</th>
                             <th>Name</th>
                             <th>Birth Date</th>
                             <th>Gender</th>
@@ -39,26 +39,28 @@
     <script type="text/javascript">
         const memberId = getLastUrlFields(window.location.href);
         $(document).ready(function () {
-            BindFamilyList();
+            BindFamilyMemberList();
         });
 
-        function BindFamilyList() {
+        function BindFamilyMemberList() {
             if ($.fn.DataTable.isDataTable("#dtFamilys")) {
                 $("#dtFamilys").dataTable().fnDestroy();
             }
             const family = $("#dtFamilys").DataTable({
                 "sAjaxSource": "/Admin/Familys/GetFamilyMemberList?memberId=" + memberId,
                 "columns": [
-                    //{
-                    //    "data": "id",
-                    //    "autoWidth": false,
-                    //    "searchable": false,
-                    //    "orderable": false,
-                    //    "render": function (data, type, row) {
-                    //        const content = `<li><a href="javascript:;" ${dataParams("Family Detail", "view-details", data)} class="dropdown-item action"><i class="fa fa-eye" aria-hidden="true"></i> Family Detail</a></li>`;
-                    //        return dataTableAction(content);
-                    //    }
-                    //},
+                    {
+                        "data": "id",
+                        "autoWidth": false,
+                        "searchable": false,
+                        "orderable": false,
+                        "render": function (data, type, row) {
+                            /**/
+                            const content = `<li><a href="javascript:;" ${dataParams("Family Detail", "view-details", data)} class="dropdown-item action"><i class="fa fa-eye" aria-hidden="true"></i> Family Detail</a></li>
+                                             <li><a href="javascript:;" ${dataParams("Delete", "delete", data)} class="dropdown-item action"><i class="fa fa-trash" aria-hidden="true"></i> Delete Member</a></li>`;
+                            return dataTableAction(content);
+                        }
+                    },
                     {
                         "data": "fullName",
                         "autoWidth": false,
@@ -156,31 +158,33 @@
                 case "view-details":
                     FamilyDetail(id);
                     break;
+                case "delete":
+                    DeleteFamily(id);
                 default:
             }
         });
 
         function FamilyDetail(id) {
-            window.location.href = `/Admin/Family/${id}`;
+            window.location.href = `/Admin/MemberInfo/${id}`;
         }
 
-        //function DeleteFamily(id) {
-        //    Parivar.Confirm("Delete Family", Parivar.typeModel.Warning, "Are you sure?", Parivar.typeModel.Danger, "Yes, delete it!", function () {
-        //        $.ajax({
-        //            url: "/Admin/Family/RemoveFamily",
-        //            data: { id: id },
-        //            type: "POST",
-        //            success: function (response) {
-        //                setTimeout(function () {
-        //                    Parivar.HandleResponse(response);
-        //                    if (response.status === 1) {
-        //                        window.BindFamilyList();
-        //                    }
-        //                }, 100);
-        //            },
-        //            error: function (data) { }
-        //        });
-        //    }, function () { });
-        //}
+        function DeleteFamily(id) {
+            Parivar.Confirm("Delete Family Member", Parivar.typeModel.Warning, "Are you sure?", Parivar.typeModel.Danger, "Yes, delete it!", function () {
+                $.ajax({
+                    url: "/Admin/Familys/DeleteFamilyMember",
+                    data: { id: id },
+                    type: "POST",
+                    success: function (response) {
+                        setTimeout(function () {
+                            Parivar.HandleResponse(response);
+                            if (response.status === 1) {
+                                window.BindFamilyMemberList();
+                            }
+                        }, 100);
+                    },
+                    error: function (data) { }
+                });
+            }, function () { });
+        }
     </script>
 }

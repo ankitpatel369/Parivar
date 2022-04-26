@@ -1,25 +1,31 @@
 ﻿@{
-    ViewData["Title"] = "Country";
+    ViewData["Title"] = "County";
 }
 
 @section PageTitle{
-    <li class="active">Country</li>
+    <li class="active">County</li>
 }
 
 <div class="row">
     <div class="col-lg-12">
+        <div class="form-group col-lg-3">
+            <label for="DistrictList">District</label>
+            <select id="DistrictList" asp-items="ViewBag.DistrictList as IEnumerable<SelectListItem>" class="form-control">
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <a href="javascript:;" onclick="AddEditCountry(0);" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Add Country</a>
-                <h3 class="card-title">Country</h3>
+                <a href="javascript:;" onclick="AddEditCounty(0);" class="btn btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Add County</a>
+                <h3 class="card-title">County</h3>
             </div>
             <div class="card-body">
-                <table id="dtCountry" class="table table-striped table-bordered dt-responsive  nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="dtCounty" class="table table-striped table-bordered dt-responsive  nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr role="row" class="title_datatable">
-                            <th>Sort Name</th>
                             <th>Name</th>
-                            <th>Phone Code</th>
+                            <th>District</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -34,34 +40,35 @@
 @section PageScripts{
     <script type="text/javascript">
         $(document).ready(function () {
-            BindCountryList();
+            var selectedValue = parseInt($("#DistrictList").val());
+            BindCountyList(selectedValue);
         });
 
-        function AddEditCountry(id) {
-            const newUrl = `/Admin/WorldDb/AddEditCountry?id=${id}`;
+        $(document).on("change", "#DistrictList", function (e) {
+            var selectedValue = parseInt($(this).val());
+            BindCountyList(selectedValue);
+        });
+
+        function AddEditCounty(id) {
+            const newUrl = `/Admin/WorldDb/AddEditCounty?id=${id}`;
             $("#modalContent").load(newUrl, function () {
                 showModal();
             });
         }
-        function BindCountryList() {
-            if ($.fn.DataTable.isDataTable("#dtCountry")) {
-                $("#dtCountry").dataTable().fnDestroy();
+        function BindCountyList(id) {
+            if ($.fn.DataTable.isDataTable("#dtCounty")) {
+                $("#dtCounty").dataTable().fnDestroy();
             }
-            const Country = $("#dtCountry").DataTable({
-                "sAjaxSource": "/Admin/WorldDb/GetCountryList",
+            const County = $("#dtCounty").DataTable({
+                "sAjaxSource": `/Admin/WorldDb/GetCountyList?DistrictId=${id}`,
                 "columns": [
-                    {
-                        "data": "sortName",
-                        "autoWidth": false,
-                        "searchable": true
-                    },
                     {
                         "data": "name",
                         "autoWidth": false,
                         "searchable": true
                     },
                     {
-                        "data": "phoneCode",
+                        "data": "district",
                         "autoWidth": false,
                         "searchable": true
                     },
@@ -71,25 +78,21 @@
                         "searchable": false,
                         "orderable": false,
                         "render": function (data, type, row) {
-                            const content = `<li><a href="javascript:;" ${dataParams("Edit", "edit", data)} class="dropdown-item action"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></li>
-                                             <li><a href="javascript:;" ${dataParams("Delete", "delete", data)} class="dropdown-item action"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></li>`;
+                            const content = `<li><a href="javascript:;" ${dataParams("Edit", "edit", data)} data-dId="${row.districtId}" class="dropdown-item action"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></li>
+                                                         <li><a href="javascript:;" ${dataParams("Delete", "delete", data)} class="dropdown-item action"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></li>`;
                             return dataTableAction(content);
                         }
                     }
                 ]
             });
-
-            //$('#dtCountry').on('draw.dt', function () {
-            //    reInitBootstrapToggle();
-            //});
         }
 
 
-        $('#dtCountry').on("change", ".admin_toggle", function (e) {
+        $('#dtCounty').on("change", ".admin_toggle", function (e) {
             const current = $(e.currentTarget).find("input");
             const id = $(current).data("id");
             $.ajax({
-                url: "/Admin/WorldDb/ManageCountryStatus",
+                url: "/Admin/WorldDb/ManageCountyStatus",
                 data: { id: id },
                 type: "POST",
                 success: function (response) {
@@ -101,31 +104,31 @@
             });
         });
 
-        $('#dtCountry').on("click", ".action", function (e) {
+        $('#dtCounty').on("click", ".action", function (e) {
             const flag = $(e.currentTarget).data("flag");
             const id = $(e.currentTarget).data("id");
             switch (flag) {
                 case "edit":
-                    AddEditCountry(id);
+                    AddEditCounty(id);
                     break;
                 case "delete":
-                    DeleteCountry(id);
+                    DeleteCounty(id);
                     break;
                 default:
             }
         });
 
-        function DeleteCountry(id) {
-            Parivar.Confirm("Delete Country", Parivar.typeModel.Warning, "Are you sure?", Parivar.typeModel.Danger, "Yes, delete it!", function () {
+        function DeleteCounty(id) {
+            Parivar.Confirm("Delete County", Parivar.typeModel.Warning, "Are you sure?", Parivar.typeModel.Danger, "Yes, delete it!", function () {
                 $.ajax({
-                    url: "/Admin/WorldDb/RemoveCountry",
+                    url: "/Admin/WorldDb/RemoveCounty",
                     data: { id: id },
                     type: "POST",
                     success: function (response) {
                         setTimeout(function () {
                             Parivar.HandleResponse(response);
                             if (response.status === 1) {
-                                window.BindCountryList();
+                                window.BindCountyList();
                             }
                         }, 100);
                     },

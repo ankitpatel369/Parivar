@@ -101,7 +101,7 @@ namespace Parivar.Controllers
         {
             ViewBag.GenderList = EnumHelpers.EnumToList<Genders>().Select(x => new SelectListItem { Text = x.Name, Value = x.Value.ToString() }).ToList();
 
-            return View(new FamilyModel());
+            return View(new FamilyModel() { CountryId = 101, StateId = 12 });
         }
 
         public IActionResult AddNoOfFamilyMembers(long id)
@@ -118,6 +118,8 @@ namespace Parivar.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> AddFamily(FamilyModel model)
         {
+            model.CountryId = 101;
+            model.StateId = 12;
             using var txscope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
             try
             {
@@ -204,7 +206,7 @@ namespace Parivar.Controllers
                 WorldDbs.Country => _familyUser.GetCountryList(),
                 WorldDbs.State => _familyUser.GetStateList(id),
                 WorldDbs.City => _familyUser.GetCityList(id),
-                WorldDbs.District => _familyUser.GetDistrictList(),
+                WorldDbs.District => _familyUser.GetDistrictList(id),
                 WorldDbs.County => _familyUser.GetCountyList(id),
                 WorldDbs.Village => _familyUser.GetVillageList(id),
                 _ => _familyUser.GetCountryList(),

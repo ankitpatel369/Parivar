@@ -86,7 +86,7 @@
                             <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="md md-chat"></i></a>
                         </li>*@
                         <li class="dropdown open">
-                            <a href="#" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="~/adminTheme/assets/images/users/avatar-1.jpg" alt="user-img" class="rounded-circle"> </a>
+                            <a href="#" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="~/adminTheme/assets/images/users/user.png" alt="user-img" class="rounded-circle"> </a>
                             <ul class="dropdown-menu">
                                 <li><a href="/Admin/MyAccount/" class="dropdown-item"><i class="md md-face-unlock mr-2"></i> Profile</a></li>
                                 <li><a href="javascript:void(0)" class="dropdown-item"><i class="md md-settings mr-2"></i> Settings</a></li>
@@ -105,7 +105,7 @@
             <div class="sidebar-inner slimscrollleft">
                 <div class="user-details">
                     <div class="pull-left">
-                        <img src="~/adminTheme/assets/images/users/avatar-1.jpg" alt="" class="thumb-md rounded-circle">
+                        <img src="~/adminTheme/assets/images/users/user.png" alt="" class="thumb-md rounded-circle">
                     </div>
                     <div class="user-info">
                         <div class="dropdown">
@@ -140,9 +140,12 @@
                         <li class="has_sub">
                             <a href="#" class="waves-effect"><i class="md md-explore"></i><span> WorldDb </span><span class="pull-right"><i class="md md-add"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="/Admin/WorldDb/Country">Country</a></li>
+                                @*<li><a href="/Admin/WorldDb/Country">Country</a></li>
                                 <li><a href="/Admin/WorldDb/State">State</a></li>
-                                <li><a href="/Admin/WorldDb/City">City</a></li>
+                                <li><a href="/Admin/WorldDb/City">City</a></li>*@
+                                <li><a href="/Admin/WorldDb/District">District</a></li>
+                                <li><a href="/Admin/WorldDb/County">County</a></li>
+                                <li><a href="/Admin/WorldDb/Village">Village</a></li>
                             </ul>
                         </li>
                         @*<li>
@@ -246,6 +249,31 @@
     </script>
     @RenderSection("PageScripts", required: false)
     <script src="~/adminTheme/assets/js/jquery.app.js"></script>
+    <script type="text/javascript">
+        function getWorldDbList(id, types) {
+            return $.ajax({
+                url: "/Home/GetWorldDbList/",
+                type: "GET",
+                data: { 'id': id, 'types': types },
+                dataType: "json",
+                traditional: true,
+                contentType: "application/json; charset=utf-8"
+            });
+        }
+
+        function renderDropdown(id, result) {
+            var label = $(id).data('label');
+            $(id).empty();
+
+            //$("<option>", { text: "--" + label + " --", value: "" }).html("-- " + label + " --").appendTo(id);
+
+            if (result != null) {
+                $.each(result.data, function (key, val) {
+                    $("<option>", { text: val.text, value: val.value, dataExtra: val.extra }).html(val.text).appendTo(id);
+                });
+            }
+        }
+    </script>
 </body>
 
 </html>

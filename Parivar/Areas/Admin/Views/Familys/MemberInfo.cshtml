@@ -1,0 +1,139 @@
+﻿@model ProfileViewModel
+@{
+    ViewData["Title"] = Model.FullName;
+}
+
+<div class="wraper">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="bg-picture text-center" style="background-image: url('/adminTheme/assets/images/big/bg.jpg')">
+                <div class="bg-picture-overlay"></div>
+                <div class="profile-info-name">
+                    <img src="~/adminTheme/assets/images/users/user.png" class="thumb-lg rounded-circle img-thumbnail" alt="profile-image">
+                    <h3 class="text-white">@Model.FullName</h3>
+                </div>
+            </div>
+            <!--/ meta -->
+        </div>
+    </div>
+    <div class="row user-tabs">
+        <div class="col-md-9 col-xl-6">
+            <ul class="nav nav-tabs tabs" role="tablist">
+                <li class="nav-item tab">
+                    <a class="nav-link active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">
+                        <span class="d-block d-sm-none"><i class="fa fa-home"></i></span>
+                        <span class="d-none d-sm-block">About Me</span>
+                    </a>
+                </li>
+                <div class="indicator"></div>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="tab-content profile-tab-content">
+                <div class="tab-pane show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <!-- Personal-Information -->
+                            <div class="card card-default card-fill">
+                                <div class="card-header">
+                                    <h3 class="card-title">Personal Information</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="about-info-p">
+                                        <strong>Full Name</strong>
+                                        <br>
+                                        <p class="text-muted">@Model.FullName</p>
+                                    </div>
+                                    <div class="about-info-p m-b-0">
+                                        <strong>Gender</strong>
+                                        <br>
+                                        <p class="text-muted">@Model.GenderString</p>
+                                    </div>
+                                    <div class="about-info-p">
+                                        <strong>Mobile</strong>
+                                        <br>
+                                        <p class="text-muted">@Model.Mobile</p>
+                                    </div>
+                                    <div class="about-info-p">
+                                        <strong>Email</strong>
+                                        <br>
+                                        <p class="text-muted">@Model.Email</p>
+                                    </div>
+                                    <div class="about-info-p m-b-0">
+                                        <strong>Location</strong>
+                                        <br>
+                                        <p class="text-muted">@Model.Location</p>
+                                    </div>
+                                    <div class="about-info-p m-b-0">
+                                        <strong>BloodGroup</strong>
+                                        <br>
+                                        <p class="text-muted">@Model.BloodGroup</p>
+                                    </div>
+                                    <div class="about-info-p m-b-0">
+                                        <strong>Education</strong>
+                                        <br>
+                                        <p class="text-muted">@Model.Education</p>
+                                    </div>
+                                    <div class="about-info-p m-b-0">
+                                        <strong>Bussioness</strong>
+                                        <br>
+                                        <p class="text-muted">@Model.Bussioness</p>
+                                    </div>
+                                    <div class="about-info-p m-b-0">
+                                        <strong>MosalSurname</strong>
+                                        <br>
+                                        <p class="text-muted">@Model.MosalSurname</p>
+                                    </div>
+                                    <div class="about-info-p m-b-0">
+                                        <strong>MosalVillage</strong>
+                                        <br>
+                                        <p class="text-muted">@Model.MosalVillage</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Personal-Information -->
+                        </div>
+
+                        <div class="col-lg-8">
+                            @{
+                                if (!string.IsNullOrEmpty(Model.AdvanceSkills))
+                                {
+                                    <div class="card card-default card-fill">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Skills</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            @foreach (var item in Model.AdvanceSkills.Split(","))
+                                            {
+                                                <div class="m-b-15">
+                                                    <h5>@item <span class="pull-right">100%</span></h5>
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-primary wow animated progress-animated" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                                            <span class="sr-only">60% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@section PageScripts{
+
+}

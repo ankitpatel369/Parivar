@@ -43,9 +43,9 @@ namespace Parivar.Repository.Service
                 }).ToList();
         }
 
-        public List<DropdownModel> GetDistrictList()
+        public List<DropdownModel> GetDistrictList(long stateId)
         {
-            return _db.Districts.Select(x => new DropdownModel
+            return _db.Districts.Where(x => x.StateId == stateId).Select(x => new DropdownModel
             {
                 Text = x.Name,
                 Value = x.Id

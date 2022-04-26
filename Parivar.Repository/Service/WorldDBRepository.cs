@@ -10,6 +10,21 @@ using System.Threading.Tasks;
 
 namespace Parivar.Repository.Service
 {
+    public class CountryRepository : GenericRepository<Countries>, ICountryService
+    {
+        private readonly ParivarDb _db;
+        public CountryRepository(ParivarDb db) : base(db)
+        {
+            _db = db;
+        }
+
+        public async Task<List<CountryModel>> GetCountryList(SqlParameter[] parameters)
+        {
+            var result = await _db.GetQueryDatatableAsync("GetCountryList", parameters);
+            return Common.ConvertDataTable<CountryModel>(result.Tables[0]);
+        }
+    }
+
     public class StateRepository : GenericRepository<States>, IStateService
     {
         private readonly ParivarDb _db;
@@ -47,6 +62,12 @@ namespace Parivar.Repository.Service
         {
             _db = db;
         }
+
+        public async Task<List<DistrictModel>> GetDistrictList(SqlParameter[] parameters)
+        {
+            var result = await _db.GetQueryDatatableAsync("GetDistrictList", parameters);
+            return Common.ConvertDataTable<DistrictModel>(result.Tables[0]);
+        }
     }
 
     public class CountyRepository : GenericRepository<Countys>, ICountyService
@@ -57,10 +78,10 @@ namespace Parivar.Repository.Service
             _db = db;
         }
 
-        public async Task<List<CountryModel>> GetCountryList(SqlParameter[] parameters)
+        public async Task<List<CountyModel>> GetCountyList(SqlParameter[] parameters)
         {
-            var result = await _db.GetQueryDatatableAsync("GetCountryList", parameters);
-            return Common.ConvertDataTable<CountryModel>(result.Tables[0]);
+            var result = await _db.GetQueryDatatableAsync("GetCountyList", parameters);
+            return Common.ConvertDataTable<CountyModel>(result.Tables[0]);
         }
     }
 
@@ -70,6 +91,12 @@ namespace Parivar.Repository.Service
         public VillageRepository(ParivarDb db) : base(db)
         {
             _db = db;
+        }
+
+        public async Task<List<VillageModel>> GetVillageList(SqlParameter[] parameters)
+        {
+            var result = await _db.GetQueryDatatableAsync("GetVillageList", parameters);
+            return Common.ConvertDataTable<VillageModel>(result.Tables[0]);
         }
     }
 }

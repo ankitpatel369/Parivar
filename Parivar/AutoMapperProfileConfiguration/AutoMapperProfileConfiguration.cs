@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Parivar.Data.DbContext;
 using Parivar.Data.DbModel;
 using Parivar.Dto.ViewModel;
 using System;
@@ -10,8 +11,8 @@ namespace Parivar.AutoMapperProfileConfiguration
     {
         public AutoMapperProfileConfiguration()
         {
-            //CreateMap<FamilyMemberDetails, FamilyUser>();
-            CreateMap<FamilyMemberDetailsModel, FamilyMemberDetails>();
+            CreateMap<FamilyModel, FamilyUser>().ReverseMap();
+            CreateMap<FamilyMemberDetailsModel, FamilyMemberDetails>().ReverseMap();
             CreateMap<ContactUs, ContactUsModel>().ReverseMap();
         }
 

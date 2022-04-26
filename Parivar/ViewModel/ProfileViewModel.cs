@@ -11,6 +11,7 @@ namespace Parivar.ViewModel
     {
         public string FullName { get; set; }
         public int? Gender { get; set; }
+        public string GenderString { get; set; }
         public bool IsMarried { get; set; }
         public string Email { get; set; }
         public string Mobile { get; set; }

@@ -141,6 +141,8 @@ namespace Parivar
             services.AddScoped<ICityService, CityRepository>();
             services.AddScoped<IContactUsService, ContactUsRepository>();
             services.AddScoped<ICountyService, CountyRepository>();
+            services.AddScoped<ICountryService, CountryRepository>();
+            
             #endregion
 
             #region _D_

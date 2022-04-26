@@ -129,6 +129,10 @@
         public const string NoticeBoard = "NoticeBoard";
         public const string OurParivar = "OurParivar";
         public const string UsefulLinks = "UsefulLinks";
-    #endregion
+        #endregion
+
+        #region Home Page
+        public const string WelcomeToChodvadiyaFamily = "WelcomeToChodvadiyaFamily";
+        #endregion
     }
 }

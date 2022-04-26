@@ -117,7 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutUs" xml:space="preserve">
+    <value>અમારા વિશે</value>
+  </data>
+  <data name="Committees" xml:space="preserve">
+    <value>સમિતિઓ</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>ઘટનાઓ</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>હોમ</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>પ્રવેશ</value>
+  </data>
+  <data name="WelcomeToChodvadiyaFamily" xml:space="preserve">
+    <value>&lt;span&gt;ચોડવડિયા પરિવારમાં &lt;br&gt;&lt;/span&gt; આપનું સ્વાગત છે</value>
   </data>
 </root>

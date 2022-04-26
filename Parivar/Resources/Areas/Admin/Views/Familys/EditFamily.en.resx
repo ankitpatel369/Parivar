@@ -117,22 +117,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutUs" xml:space="preserve">
-    <value>About Us</value>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Birth Date</value>
   </data>
-  <data name="Committees" xml:space="preserve">
-    <value>Committees</value>
+  <data name="BloodGroup" xml:space="preserve">
+    <value>Blood Group</value>
   </data>
-  <data name="Events" xml:space="preserve">
-    <value>Events</value>
+  <data name="Business" xml:space="preserve">
+    <value>Business</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
   </data>
-  <data name="Login" xml:space="preserve">
-    <value>Login</value>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
   </data>
-  <data name="WelcomeToChodvadiyaFamily" xml:space="preserve">
-    <value>Welcome &lt;span&gt;to &lt;br&gt; Chodavadiya&lt;/span&gt; Parivar</value>
+  <data name="District" xml:space="preserve">
+    <value>District</value>
+  </data>
+  <data name="EducationStudy" xml:space="preserve">
+    <value>Education / Study</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FatherName" xml:space="preserve">
+    <value>Father's name</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="MainMember" xml:space="preserve">
+    <value>Name of the main member of the household</value>
+  </data>
+  <data name="Married" xml:space="preserve">
+    <value>Married</value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value>Member</value>
+  </data>
+  <data name="MemberDetails" xml:space="preserve">
+    <value>Details Of Family Members</value>
+  </data>
+  <data name="MemberName" xml:space="preserve">
+    <value>Member name</value>
+  </data>
+  <data name="MemberRegistrationForm" xml:space="preserve">
+    <value>Member registration form</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="MosalVillage" xml:space="preserve">
+    <value>The village of Mosul</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Relationship" xml:space="preserve">
+    <value>Relationship</value>
+  </data>
+  <data name="RelationshipWithMainMember" xml:space="preserve">
+    <value>Relationship with main member</value>
+  </data>
+  <data name="ResidentialAddress" xml:space="preserve">
+    <value>Residential address</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="SurnameOfMosal" xml:space="preserve">
+    <value>Mosal's surname</value>
+  </data>
+  <data name="Taluk" xml:space="preserve">
+    <value>Taluk</value>
+  </data>
+  <data name="TotalMembersInHouse" xml:space="preserve">
+    <value>The total number of members in the house</value>
+  </data>
+  <data name="Village" xml:space="preserve">
+    <value>Village</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

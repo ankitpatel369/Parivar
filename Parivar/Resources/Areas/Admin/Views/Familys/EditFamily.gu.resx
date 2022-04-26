@@ -117,22 +117,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutUs" xml:space="preserve">
-    <value>About Us</value>
+  <data name="BirthDate" xml:space="preserve">
+    <value>જન્મ તારીખ</value>
   </data>
-  <data name="Committees" xml:space="preserve">
-    <value>Committees</value>
+  <data name="BloodGroup" xml:space="preserve">
+    <value>બ્લડ ગ્રુપ</value>
   </data>
-  <data name="Events" xml:space="preserve">
-    <value>Events</value>
+  <data name="Business" xml:space="preserve">
+    <value>બિઝનેસ</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
+  <data name="City" xml:space="preserve">
+    <value>શહેર</value>
   </data>
-  <data name="Login" xml:space="preserve">
-    <value>Login</value>
+  <data name="Country" xml:space="preserve">
+    <value>દેશ</value>
   </data>
-  <data name="WelcomeToChodvadiyaFamily" xml:space="preserve">
-    <value>Welcome &lt;span&gt;to &lt;br&gt; Chodavadiya&lt;/span&gt; Parivar</value>
+  <data name="District" xml:space="preserve">
+    <value>જિલ્લો</value>
+  </data>
+  <data name="EducationStudy" xml:space="preserve">
+    <value>શિક્ષણ / અભ્યાસ</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>ઇમેઇલ</value>
+  </data>
+  <data name="FatherName" xml:space="preserve">
+    <value>પિતાનું નામ</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>જાતિ</value>
+  </data>
+  <data name="MainMember" xml:space="preserve">
+    <value>ઘરના મુખ્ય સભ્યનું નામ</value>
+  </data>
+  <data name="Married" xml:space="preserve">
+    <value>પરિણીત</value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value>સભ્ય</value>
+  </data>
+  <data name="MemberDetails" xml:space="preserve">
+    <value>પરિવારના સભ્યોની વિગતો</value>
+  </data>
+  <data name="MemberName" xml:space="preserve">
+    <value>સભ્યનું નામ</value>
+  </data>
+  <data name="MemberRegistrationForm" xml:space="preserve">
+    <value>સભ્ય નોંધણી ફોર્મ</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>મોબાઇલ નંબર</value>
+  </data>
+  <data name="MosalVillage" xml:space="preserve">
+    <value>મોસાળ નું ગામ</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>ના</value>
+  </data>
+  <data name="Relationship" xml:space="preserve">
+    <value>સંબંધ</value>
+  </data>
+  <data name="RelationshipWithMainMember" xml:space="preserve">
+    <value>મુખ્ય સભ્ય સાથે સંબંધ</value>
+  </data>
+  <data name="ResidentialAddress" xml:space="preserve">
+    <value>રહેણાંક સરનામું</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value />
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>રાજ્ય</value>
+  </data>
+  <data name="SubmitNow" xml:space="preserve">
+    <value>સબમિટ કરો</value>
+  </data>
+  <data name="SurnameOfMosal" xml:space="preserve">
+    <value>મોસાળની અટક</value>
+  </data>
+  <data name="Taluk" xml:space="preserve">
+    <value>તાલુકો</value>
+  </data>
+  <data name="TotalMembersInHouse" xml:space="preserve">
+    <value>ઘરમાં સભ્યોની કુલ સંખ્યા</value>
+  </data>
+  <data name="Village" xml:space="preserve">
+    <value>ગામ</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>હા</value>
   </data>
 </root>

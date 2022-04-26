@@ -16,6 +16,7 @@ namespace Parivar.Data.Extensions
         {
             using (DbCommand cmd = context.Database.GetDbConnection().CreateCommand())
             {
+                cmd.CommandTimeout = 0;
                 cmd.Connection = context.Database.GetDbConnection();
                 cmd.CommandType = type;
                 if (sqlParam != null)

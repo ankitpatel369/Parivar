@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Parivar.Repository.Interface
 {
+    public interface ICountryService : IGenericService<Countries>
+    {
+        Task<List<CountryModel>> GetCountryList(SqlParameter[] parameters);
+    }
     public interface IStateService : IGenericService<States>
     {
         Task<List<StateModel>> GetStateList(SqlParameter[] parameters);
@@ -18,14 +22,16 @@ namespace Parivar.Repository.Interface
 
     public interface IDistrictService : IGenericService<Districts>
     {
+        Task<List<DistrictModel>> GetDistrictList(SqlParameter[] parameters);
     }
 
     public interface ICountyService : IGenericService<Countys>
     {
-        Task<List<CountryModel>> GetCountryList(SqlParameter[] parameters);
+        Task<List<CountyModel>> GetCountyList(SqlParameter[] parameters);
     }
 
     public interface IVillageService : IGenericService<Villages>
     {
+        Task<List<VillageModel>> GetVillageList(SqlParameter[] parameters);
     }
 }

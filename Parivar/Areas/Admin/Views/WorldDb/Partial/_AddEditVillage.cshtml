@@ -1,0 +1,69 @@
+﻿@model Parivar.Dto.ViewModel.VillageModel
+@{
+    Layout = null;
+}
+<div class="modal-header">
+    <h4 class="modal-title mt-0">@(Model.Id == 0 ? "Add" : "Edit") Village</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form id="frmVillage">
+        @Html.AntiForgeryToken()
+        <input asp-for="Id" type="hidden" class="form-control">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="CountyId" class="control-label">District</label>
+                    <select asp-for="DistrictId" asp-items="ViewBag.DistrictList as IEnumerable<SelectListItem>" class="form-control">
+                        <option value="">Select District</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="CountyId" class="control-label">County</label>
+                    <select asp-for="CountyId" asp-items="Enumerable.Empty<SelectListItem>()" class="form-control" data-label="County"></select>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="Name" class="control-label">Name</label>
+                    <input asp-for="Name" type="text" class="form-control">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+    <button type="button" id="btnSave" class="btn btn-info waves-effect waves-light">Save</button>
+</div>
+<partial name="~/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml" />
+<script type="text/javascript">
+
+    $("#btnSave").click(function () {
+        var $form = $('#frmVillage');
+        $.validator.unobtrusive.parse($form);
+        if ($form.valid()) {
+            $.post("/Admin/WorldDb/AddEditVillage", $form.serialize(), function (response) {
+                if (response.status === 1) {
+                    Parivar.HandleResponse(response);
+                    closeModal();
+                    var districtValue = parseInt($("#DistrictList").val());
+                    var countyValue = parseInt($("#CountyList").val());
+                    BindVillageList(districtValue, countyValue);
+                }
+            });
+        }
+    });
+
+    $(document).on("change", "#DistrictId", function (e) {
+        var selectedValue = $(this).val();
+        getWorldDbList(selectedValue, 5).done(function (result) {
+            renderDropdown("#CountyId", result);
+        });
+    });
+</script>

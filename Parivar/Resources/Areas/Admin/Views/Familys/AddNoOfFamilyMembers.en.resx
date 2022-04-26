@@ -117,22 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutUs" xml:space="preserve">
-    <value>About Us</value>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Birth Date</value>
   </data>
-  <data name="Committees" xml:space="preserve">
-    <value>Committees</value>
+  <data name="BloodGroup" xml:space="preserve">
+    <value>Blood Group</value>
   </data>
-  <data name="Events" xml:space="preserve">
-    <value>Events</value>
+  <data name="Business" xml:space="preserve">
+    <value>Business</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
+  <data name="EducationStudy" xml:space="preserve">
+    <value>Education / Study</value>
   </data>
-  <data name="Login" xml:space="preserve">
-    <value>Login</value>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
   </data>
-  <data name="WelcomeToChodvadiyaFamily" xml:space="preserve">
-    <value>Welcome &lt;span&gt;to &lt;br&gt; Chodavadiya&lt;/span&gt; Parivar</value>
+  <data name="Married" xml:space="preserve">
+    <value>Married</value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value>Member</value>
+  </data>
+  <data name="MemberDetails" xml:space="preserve">
+    <value>Details Of Family Members</value>
+  </data>
+  <data name="MemberName" xml:space="preserve">
+    <value>Member name</value>
+  </data>
+  <data name="MosalVillage" xml:space="preserve">
+    <value>The village of Mosul</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Relationship" xml:space="preserve">
+    <value>Relationship</value>
+  </data>
+  <data name="RelationshipWithMainMember" xml:space="preserve">
+    <value>Relationship with main member</value>
+  </data>
+  <data name="SurnameOfMosal" xml:space="preserve">
+    <value>Mosal's surname</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

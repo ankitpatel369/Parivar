@@ -25,6 +25,7 @@
     @RenderSection("Styles", required: false)
     <link rel="stylesheet" href="~/theme/css/vendor/plugins.min.css">
     <link rel="stylesheet" href="~/theme/css/style.min.css">
+    <link href="~/adminTheme/plugins/sweetalert2/sweetalert2.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -63,10 +64,12 @@
 
     <!--====== Main Activation  js ======-->
     <script src="~/theme/js/main.js"></script>
-
+    <script type="text/javascript" src="~/adminTheme/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/lib/Common/dialogs.js"></script>
     <partial name="_ValidationScriptsPartial.cshtml" />
     @RenderSection("Scripts", required: false)
     <partial name="_TranslateBar.cshtml" />
+    <script type="text/javascript" src="~/lib/Common/common.js"></script>
 </body>
 </html>
 

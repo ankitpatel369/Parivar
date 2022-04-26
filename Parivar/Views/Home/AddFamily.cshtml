@@ -43,6 +43,9 @@
                     <div class="contact-form-wrapper">
                         <form id="frmAddFamily">
                             @Html.AntiForgeryToken()
+                            @*<input asp-for="CountryId" type="hidden" />
+                            <input asp-for="StateId" type="hidden" />
+                            <input asp-for="CityId" type="hidden" />*@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="single-form">
@@ -69,7 +72,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            @*<div class="row">
                                 <div class="col-md-4">
                                     <div class="single-form">
                                         <label>@Localizer[LocalizationConstant.Country]</label>
@@ -91,7 +94,7 @@
                                         <select asp-for="CityId" class="select2 form-control" data-label="@Localizer[LocalizationConstant.City]"></select>
                                     </div>
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="row mt-10">
                                 <div class="col-md-4 mb-1">
                                     <div class="single-form">
@@ -133,7 +136,6 @@
                                 <div class="col-md-3">
                                     <div class="single-form">
                                         <label>@Localizer[LocalizationConstant.Gender]</label>
-                                        <br />
                                         <select class="select2 form-control" data-label="@Localizer[LocalizationConstant.Gender]" asp-for="Gender" asp-items="ViewBag.GenderList as IEnumerable<SelectListItem>">
                                         </select>
                                         <span asp-validation-for="Gender" class="text-danger"></span>
@@ -182,19 +184,20 @@
         });
 
         $(document).ready(function () {
-            getWorldDbList(0, 1).done(function (response) {
-                renderDropdown("#CountryId", response);
-                renderDropdown("#StateId", null);
-                renderDropdown("#CityId", null);
-                getWorldDbList(0, 4).done(function (response) {
-                    renderDropdown("#DistrictId", response);
-                    renderDropdown("#CountyId", null);
-                    renderDropdown("#VillageId", null);
-                });
+            //getWorldDbList(0, 1).done(function (response) {
+            //    renderDropdown("#CountryId", response);
+            //    renderDropdown("#StateId", null);
+            //    renderDropdown("#CityId", null);
+            //});
+            getWorldDbList(@(Model.StateId), 4).done(function (response) {
+                renderDropdown("#DistrictId", response);
+                renderDropdown("#CountyId", null);
+                renderDropdown("#VillageId", null);
+                $("span[data-select2-id]").css({ "padding": "10px 5px 3px" });
             });
         });
 
-        $("#CountryId").select2({ placeholder: "-- @Localizer[LocalizationConstant.Country] --" }).on('change', function () {
+        @*$("#CountryId").select2({ placeholder: "-- @Localizer[LocalizationConstant.Country] --" }).on('change', function () {
             var selectedValue = $(this).val();
             renderDropdown("#StateId", null);
             renderDropdown("#CityId", null);
@@ -209,7 +212,7 @@
             getWorldDbList(selectedValue, 3).done(function (result) {
                 renderDropdown("#CityId", result);
             });
-        });
+        });*@
 
         $("#DistrictId").select2({ placeholder: "-- @Localizer[LocalizationConstant.District] --" }).on('change', function () {
             var selectedValue = $(this).val();
@@ -288,8 +291,6 @@
             var label = $(id).data('label');
             $(id).empty();
 
-            //var label = id.replace("Id", "").replace("#", "");
-            //label = (label == "County" ? "Taluk" : label);
             $("<option>", { text: "--" + label + " --", value: "" }).html("-- " + label + " --").appendTo(id);
 
             if (result != null) {
