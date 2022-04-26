@@ -265,8 +265,6 @@
             var label = $(id).data('label');
             $(id).empty();
 
-            //$("<option>", { text: "--" + label + " --", value: "" }).html("-- " + label + " --").appendTo(id);
-
             if (result != null) {
                 $.each(result.data, function (key, val) {
                     $("<option>", { text: val.text, value: val.value, dataExtra: val.extra }).html(val.text).appendTo(id);

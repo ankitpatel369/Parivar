@@ -139,7 +139,7 @@
     <value>Education / Study</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value />
+    <value>Email</value>
   </data>
   <data name="FatherName" xml:space="preserve">
     <value>Father's name</value>

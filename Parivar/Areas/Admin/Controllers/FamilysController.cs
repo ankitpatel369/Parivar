@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Localization;
 using Parivar.Data.DbContext;
 using Parivar.Data.DbModel;
 using Parivar.Dto.Enum;
@@ -18,6 +19,7 @@ using Parivar.Repository.Interface;
 using Parivar.Utility;
 using Parivar.Utility.Common;
 using Parivar.Utility.Extension;
+using Parivar.Utility.Helpers;
 using Parivar.ViewModel;
 
 namespace Parivar.Areas.Admin.Controllers
@@ -25,13 +27,16 @@ namespace Parivar.Areas.Admin.Controllers
     [Authorize, Area("Admin")]
     public class FamilysController : BaseController<FamilysController>
     {
+        private readonly ICategoriesMasterService _categories;
         private readonly IFamilyMemberDetailsService _familyMemberDetails;
         private readonly IFamilyUserService _familyUser;
         private readonly UserManager<FamilyUser> _userManager;
-
-        public FamilysController(IFamilyMemberDetailsService familyMemberDetails, IFamilyUserService familyUser,
+        private readonly IStringLocalizer<FamilysController> _familyLocalizer;
+        public FamilysController(ICategoriesMasterService categories, IStringLocalizer<FamilysController> familyLocalizer, IFamilyMemberDetailsService familyMemberDetails, IFamilyUserService familyUser,
             UserManager<FamilyUser> userManager)
         {
+            _familyLocalizer = familyLocalizer;
+            _categories = categories;
             _familyMemberDetails = familyMemberDetails;
             _familyUser = familyUser;
             _userManager = userManager;
@@ -40,7 +45,6 @@ namespace Parivar.Areas.Admin.Controllers
         #region Family
         public IActionResult Index()
         {
-            BindDropdownList();
 
             return View();
         }
@@ -109,12 +113,79 @@ namespace Parivar.Areas.Admin.Controllers
         [Route("/Admin/EditFamily/{id}")]
         public async Task<IActionResult> EditFamily(long id)
         {
+            BindDropdownList();
             ViewBag.IsBreadcrumb = true;
             var mainMember = await _familyUser.GetSingleAsync(x => x.Id == id);
             var familyModel = Mapper.Map<FamilyUser, FamilyModel>(mainMember);
             familyModel.FamilyMemberDetails = Mapper.Map<List<FamilyMemberDetails>, List<FamilyMemberDetailsModel>>(mainMember.FamilyMemberDetails.ToList());
-
+            for (int i = 0; i < familyModel.FamilyMemberDetails.Count; i++)
+            {
+                familyModel.FamilyMemberDetails[i].DateOfBirthInStr = mainMember.FamilyMemberDetails.FirstOrDefault(x => x.Id == familyModel.FamilyMemberDetails[i].Id).DateOfBirth.ToString("MMM/dd/yyyy");
+            }
             return View(familyModel);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditFamily(FamilyModel model)
+        {
+            model.CountryId = 101;
+            model.StateId = 12;
+            using var txscope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
+            try
+            {
+                if (!ModelState.IsValid) return JsonResponse.GenerateJsonResult(0, string.Join(",", ModelState.GetModelError()));
+                var isExist = await _familyUser.GetSingleAsync(x => x.Id == model.Id);
+                if (isExist == null)
+                {
+                    txscope.Dispose();
+                    return JsonResponse.GenerateJsonResult(0, GlobalConstant.UserNotFound);
+                }
+
+                #region Edit Family User
+
+                isExist.FirstName = model.FirstName;
+                isExist.LastName = model.LastName;
+                isExist.FatherName = model.FatherName;
+                isExist.Gender = model.Gender;
+                isExist.PhoneNumber = model.PhoneNumber;
+                isExist.ResidentAddress = model.ResidentAddress;
+                isExist.CountryId = model.CountryId;
+                isExist.StateId = model.StateId;
+                isExist.CityId = model.CityId;
+                isExist.DistrictId = model.DistrictId;
+                isExist.CountyId = model.CountyId;
+                isExist.VillageId = model.VillageId;
+                await _userManager.UpdateAsync(isExist);
+                #endregion
+
+                #region Edit Family Member Details
+                foreach (var item in isExist.FamilyMemberDetails)
+                {
+                    var member = model.FamilyMemberDetails.FirstOrDefault(x => x.Id == item.Id);
+                    item.FullName = member.FullName;
+                    item.RelationShipId = member.RelationShipId;
+                    item.DateOfBirth = member.DateOfBirth;
+                    item.BloodGroupId = member.BloodGroupId;
+                    item.Gender = member.Gender;
+                    item.IsMarried = member.IsMarried;
+                    item.EducationId = member.EducationId;
+                    item.BussionessId = member.BussionessId;
+                    item.MosalSurname = member.MosalSurname;
+                    item.MosalVillage = member.MosalVillage;
+                    _familyMemberDetails.Update(item, User.GetUserId());
+                    _familyMemberDetails.Save();
+                }
+                #endregion
+
+                txscope.Complete();
+                return JsonResponse.GenerateJsonResult(1, GlobalConstant.UserUpdatedSuccessfully);
+            }
+            catch (Exception ex)
+            {
+                txscope.Dispose();
+                ErrorLog.AddErrorLog(ex, "Post-AddFamily");
+                return JsonResponse.GenerateJsonResult(0, GlobalConstant.SomethingWrong);
+            }
         }
 
         [HttpGet]
@@ -245,6 +316,11 @@ namespace Parivar.Areas.Admin.Controllers
         #region Common     
         private void BindDropdownList()
         {
+            ViewBag.GenderList = EnumHelpers.EnumToList<Genders>().Select(x => new SelectListItem { Text = x.Name, Value = x.Value.ToString() }).ToList();
+            ViewBag.BloodGroupList = _categories.GetBloodGroupList(_familyLocalizer[LocalizationConstant.BloodGroup].Value).Select(x => new SelectListItem { Value = x.Value.ToString(), Text = x.Text });
+            ViewBag.BusinessList = _categories.GetBusinessList(_familyLocalizer[LocalizationConstant.Business].Value).Select(x => new SelectListItem { Value = x.Value.ToString(), Text = x.Text });
+            ViewBag.EducationList = _categories.GetEducationList(_familyLocalizer[LocalizationConstant.EducationStudy].Value).Select(x => new SelectListItem { Value = x.Value.ToString(), Text = x.Text });
+            ViewBag.RelationShipList = _categories.GetRelationShipList(_familyLocalizer[LocalizationConstant.Relationship].Value).Select(x => new SelectListItem { Value = x.Value.ToString(), Text = x.Text });
         }
         private string GetGender(int gender)
         {
