@@ -52,6 +52,11 @@ namespace Parivar
                 options.DefaultRequestCulture = new RequestCulture("gu");
                 options.SupportedCultures = cultures;
                 options.SupportedUICultures = cultures;
+                options.RequestCultureProviders = new List<IRequestCultureProvider>
+        {
+            new QueryStringRequestCultureProvider(),
+            new CookieRequestCultureProvider()
+        };
             });
 
 
