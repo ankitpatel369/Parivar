@@ -79,6 +79,7 @@
         #region HeaderBar
         public const string AdminDashboard = "Admin Dashboard";
         public const string Dashboard = "Dashboard";
+        public const string HeaderSnehamilan = "HeaderSnehamilan";
 
         #endregion
 

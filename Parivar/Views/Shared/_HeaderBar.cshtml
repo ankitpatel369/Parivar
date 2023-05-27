@@ -1,4 +1,10 @@
 ﻿@using Microsoft.Extensions.Options
+@using Parivar
+@using Parivar.Models
+@using Parivar.Dto.Enum
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
 
 @inject IViewLocalizer Localizer
 @inject IOptions<RequestLocalizationOptions> LocOptions
@@ -136,17 +142,18 @@
                     {
                         if (User.IsInRole(Parivar.Dto.Enum.UserRoles.SystemAdmin))
                         {
-                            <a class="login" href="/Admin/Dashboard">@Localizer[LocalizationConstant.AdminDashboard]</a> 
+                            <a class="login" href="/Admin/Dashboard">@Localizer[LocalizationConstant.AdminDashboard]</a>
                         }
                         else
                         {
-                            <a class="login" href="/Member/Dashboard">@Localizer[LocalizationConstant.Dashboard]</a> 
+                            <a class="login" href="/Member/Dashboard">@Localizer[LocalizationConstant.Dashboard]</a>
                         }
                     }
                     else
                     {
-                            <a class="login" href="/Account/Login">@Localizer[LocalizationConstant.Login]</a>
-                            <a class="register" href="/Home/AddFamily">@Localizer[LocalizationConstant.RegisterFamily] &nbsp;&nbsp;&nbsp; <span style="color:#8d8d8d;">|</span></a>
+                        <a class="snehamilan" href="/Snehamilan/" target="_blank">@Localizer[LocalizationConstant.HeaderSnehamilan] @DateTime.Now.Year</a>
+                        <a class="login" href="/Account/Login">@Localizer[LocalizationConstant.Login]</a>
+                        <a class="register" href="/Home/AddFamily">@Localizer[LocalizationConstant.RegisterFamily] &nbsp;&nbsp;&nbsp; <span style="color:#8d8d8d;">|</span></a>
                     }
 
                     <a class="notice">

@@ -147,6 +147,9 @@
   <data name="gu" xml:space="preserve">
     <value>ગુજરાતી</value>
   </data>
+  <data name="HeaderSnehamilan" xml:space="preserve">
+    <value>સ્નેહમિલન</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>હોમ</value>
   </data>

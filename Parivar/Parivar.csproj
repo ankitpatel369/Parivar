@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Views\Account\" />
+	<Folder Include="Resources\Views\Account\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
@@ -24,6 +24,10 @@
   <ItemGroup>
     <None Include="wwwroot\adminTheme\plugins\sweetalert2\sweetalert2.js" />
     <None Include="wwwroot\adminTheme\plugins\sweetalert2\sweetalert2.min.js" />
+    <None Include="wwwroot\snehamilan\assets\img\dc-logo-design-template_523404-703.avif" />
+    <None Include="wwwroot\snehamilan\assets\scripts\canvas2image.js" />
+    <None Include="wwwroot\snehamilan\assets\scripts\croppie.min.js" />
+    <None Include="wwwroot\snehamilan\assets\scripts\html2canvas.min.js" />
   </ItemGroup>
 
   <ItemGroup>

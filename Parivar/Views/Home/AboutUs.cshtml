@@ -1,5 +1,4 @@
-﻿
-@inject IViewLocalizer Localizer
+﻿@inject IViewLocalizer Localizer
 @{
     ViewData["Title"] = Localizer[LocalizationConstant.AboutUs];
 }
@@ -35,12 +34,37 @@
             max-width: 100% !important;
         }
 
+        .features-items .features-items-wrapper .single-features-temple {
+            padding: 50px 0px 50px 0px !important;
+            max-width: 100% !important;
+        }
+
         .media-body, .item-icon {
             margin-right: 20px !important;
         }
 
         .pull-right {
             float: right;
+        }
+
+        .border-bottom-h3 {
+            border-bottom: 1px solid #dbdbdb;
+            padding-bottom: 4px;
+        }
+
+        /* For Mobile Phones Portrait or Landscape View */
+        @@media screen and (max-device-width: 640px) {
+            .features-items {
+                margin-top: 25px;
+            }
+
+            .features-image-2{
+                margin-top: 25px;
+            }
+
+            .features-items-wrapper{
+                margin-right: 2%;
+            }
         }
     </style>
 }
@@ -93,7 +117,7 @@
                     <p class="text-justify">
                         આમ ઉપરની માહિતી મુજબ ડભાસીયા, રાખોલીયા, છોડવડીયા, નાગાણી અને લાખાણી આ બધી જ અટક ના પરિવાર ના પૂર્વજો એક જ છે, એવું માનવામાં આવે છે.
                         <br /> <br />
-                        <b>નોધ :- </b>પ્રાચીન સમય માં ઉચ્ચારણ, ભાષા ની શુધ્ધી અને શિક્ષણ ના અભાવ ના કારણે <b>ચ, છ, સ, શ, ષ</b> જેવા અક્ષરો બોલવામાં કોઈ તફાવત નહીં માનતા હતા અને માત્ર સ અક્ષર નું જ ઉચ્ચારણ કરવામાં આવતું જેના કારણે છોડવડીયા માંથી <b>ચોડવડીયા, સોડવડીયા</b> જેવી અટક નું ઉચ્ચારણ વર્તમાન સમય માં થઈ રહ્યું છે, પરંતુ મૂળ સૌ એક જ છે.
+                        <b>નોધ : </b>પ્રાચીન સમય માં ઉચ્ચારણ, ભાષા ની શુધ્ધી અને શિક્ષણ ના અભાવ ના કારણે <b>ચ, છ, સ, શ, ષ</b> જેવા અક્ષરો બોલવામાં કોઈ તફાવત નહીં માનતા હતા અને માત્ર સ અક્ષર નું જ ઉચ્ચારણ કરવામાં આવતું જેના કારણે છોડવડીયા માંથી <b>ચોડવડીયા, સોડવડીયા</b> જેવી અટક નું ઉચ્ચારણ વર્તમાન સમય માં થઈ રહ્યું છે, પરંતુ મૂળ સૌ એક જ છે.
                     </p>
 
                 </div>
@@ -125,60 +149,79 @@
             <div class="col-lg-8">
                 <div class="features-items">
                     <div class="features-items-wrapper">
-                        <div class="single-features-item d-flex align-items-center">
-                            <div class="item-content media-body">
-                                <p>વિરપુર</p>
-                            </div>
+                        <h3 class="border-bottom-h3">વિરપુર</h3>
+                        <div class="mt-20 d-flex align-items-center">
                             <div class="item-icon">
-                                <p>તા:- ધારી<br /> જી:- અમરેલી</p>
+                                <p>તા: ધારી<br /> જી: અમરેલી </p>
                             </div>
                         </div>
-                        <div class="single-features-item d-flex align-items-center">
-                            <div class="item-content media-body">
-                                <p>પરબડી</p>
-                            </div>
-                            <div class="item-icon">
-                                <p>તા:- ધારી<br /> જી:- અમરેલી</p>
-                            </div>
-                        </div>
-                        <div class="single-features-item d-flex align-items-center">
-                            <div class="item-content media-body">
-                                <p>ડુંડાસ</p>
-                            </div>
-                            <div class="item-icon">
-                                <p>તા:- મહુવા<br /> જી:- ભાવનગર</p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="features-items-wrapper">
-                        <div class="single-features-item d-flex align-items-center">
-                            <div class="item-content media-body">
-                                <p>ધાર કેરાળા</p>
-                            </div>
-                            <div class="item-icon">
-                                <p>તા:- સાવરકુંડલા<br /> જી:- અમરેલી</p>
-                            </div>
-                        </div>
-                        <div class="single-features-item d-flex align-items-center">
-                            <div class="item-content media-body">
-                                <p>દોલતી</p>
-                            </div>
-                            <div class="item-icon">
-                                <p class="mb-1">તા:- સાવરકુંડલા<br /> જી:- અમરેલી</p>
-                            </div>
-                        </div>
-                        <div class="single-features-item d-flex align-items-center">
-                            <div class="item-content media-body">
-                                <p>કાન્ગચીયાળા</p>
-                            </div>
-                            <div class="item-icon">
-                                <p>તા:- વિસાવદર<br /> જી:- જૂનાગઢ</p>
+                        <div class="single-features-item">
+                            <h3 class="border-bottom-h3">પરબડી</h3>
+                            <div class="mt-20 d-flex align-items-center">
+                                <div class="item-icon">
+                                    <p>તા: ધારી<br /> જી: અમરેલી</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="features-items-wrapper">
+                        <h3 class="border-bottom-h3">ધાર કેરાળા</h3>
+                        <div class="mt-20 d-flex align-items-center">
+                            <div class="item-icon">
+                                <p>તા: સાવરકુંડલા<br /> જી: અમરેલી</p>
+                            </div>
+                        </div>
+                        <div class="single-features-item">
+                            <h3 class="border-bottom-h3">દોલતી</h3>
+                            <div class="mt-20 d-flex align-items-center">
+                                <div class="item-icon">
+                                    <p>તા: સાવરકુંડલા<br /> જી: અમરેલી</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="border-bottom-h3">સિમરણ</h3>
+                        <div class="mt-20 d-flex align-items-center">
+                            <div class="item-icon">
+                                <p>તા: સાવરકુંડલા<br /> જી: અમરેલી</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="features-items-wrapper">
+                        <h3 class="border-bottom-h3">નવી કાતર</h3>
+                        <div class="mt-20 d-flex align-items-center">
+                            <div class="item-icon">
+                                <p>તા: ખંભા <br /> જી: અમરેલી</p>
+                            </div>
+                        </div>
+                        <div class="single-features-item">
+                            <h3 class="border-bottom-h3">ઢસા</h3>
+                            <div class="mt-20 d-flex align-items-center">
+                                <div class="item-icon">
+                                    <p>તા: ગઢડા (સ્વામી)<br /> જી: અમરેલી</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="features-items-wrapper">
+                        <h3 class="border-bottom-h3">છેલણકા</h3>
+                        <div class="mt-20 d-flex align-items-center">
+                            <div class="item-icon">
+                                <p>તા: વિસાવદર<br /> જી: જૂનાગઢ</p>
+                            </div>
+                        </div>
+                        <div class="single-features-item">
+                            <h3 class="border-bottom-h3">કાંગશીયાળા</h3>
+                            <div class="mt-20 d-flex align-items-center">
+                                <div class="item-icon">
+                                    <p>તા: વિસાવદર<br /> જી: જૂનાગઢ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
-                <a href="/Parivar/DevPlaces" class="main-btn pull-right">@Localizer[LocalizationConstant.SeeMore]</a>
+                @*<a href="/Parivar/DevPlaces" class="main-btn pull-right">@Localizer[LocalizationConstant.SeeMore]</a>*@
             </div>
         </div>
     </div>
@@ -204,44 +247,69 @@
             <div class="col-lg-8">
                 <div class="features-items">
                     <div class="features-items-wrapper">
-                        <div class="single-features-item d-flex align-items-center">
-                            <div class="item-content media-body">
-                                <p>વિરપુર</p>
-                            </div>
+                        <h3 class="border-bottom-h3">વિરપુર</h3>
+                        <div class="mt-20 d-flex align-items-center">
                             <div class="item-icon">
                                 <p>શ્રી વીરાબાપા</p>
                             </div>
                         </div>
-                        <div class="single-features-item d-flex align-items-center">
-                            <div class="item-content media-body">
-                                <p>પરબડી</p>
-                            </div>
-                            <div class="item-icon">
-                                <p>શ્રી ટપુદાદા<br /> શ્રી નાગજીદાદા</p>
+
+                        <div class="single-features-item">
+                            <h3 class="border-bottom-h3">દોલતી</h3>
+                            <div class="mt-20 d-flex align-items-center">
+                                <div class="item-icon">
+                                    <p>શ્રી પ્રેમજીદાદા</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="features-items-wrapper">
-                        <div class="single-features-item d-flex align-items-center">
-                            <div class="item-content media-body">
-                                <p>ધાર કેરાળા</p>
-                            </div>
+                        <h3 class="border-bottom-h3">ધાર કેરાળા</h3>
+                        <div class="mt-20 d-flex align-items-center">
                             <div class="item-icon">
                                 <p>શ્રી હરજીદાદા</p>
                             </div>
                         </div>
-                        <div class="single-features-item d-flex align-items-center">
-                            <div class="item-content media-body">
-                                <p>દોલતી</p>
-                            </div>
-                            <div class="item-icon">
-                                <p class="mb-1">શ્રી પ્રેમજીદાદા</p>
+
+                        <div class="single-features-item">
+                            <h3 class="border-bottom-h3">સિમરણ</h3>
+                            <div class="mt-20 d-flex align-items-center">
+                                <div class="item-icon">
+                                    <p>શ્રી લવજીદાદા</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="features-items-wrapper">
+                        <h3 class="border-bottom-h3">છેલણકા</h3>
+                        <div class="mt-20 d-flex align-items-center">
+                            <div class="item-icon">
+                                <p>શ્રી બચૂદાદા</p>
+                            </div>
+                        </div>
+                        <div class="single-features-item">
+                            <h3 class="border-bottom-h3">પરબડી</h3>
+                            <div class="mt-20 d-flex align-items-center">
+                                <div class="item-icon">
+                                    <p>શ્રી ટપુદાદા</p><p>શ્રી નાગજીદાદા</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="features-items-wrapper">
+                        <h3 class="border-bottom-h3">મહુડી-મહુડા</h3>
+                        <div class="mt-20 d-flex align-items-center">
+                            <div class="item-icon">
+                                <p>શ્રી સવજી દાદા</p>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
-                <a href="/Parivar/DevPlaces" class="main-btn pull-right">@Localizer[LocalizationConstant.SeeMore]</a>
+                @*<a href="/Parivar/DevPlaces" class="main-btn pull-right">@Localizer[LocalizationConstant.SeeMore]</a>*@
             </div>
         </div>
     </div>
@@ -267,30 +335,92 @@
             <div class="col-lg-8">
                 <div class="features-items">
                     <div class="features-items-wrapper">
-                        <h3>પરબડી</h3>
-                        <div class="single-features-item d-flex align-items-center">
+                        <h3 class="border-bottom-h3">પરબડી</h3>
+                        <div class="mt-20 d-flex align-items-center">
                             <div class="item-icon">
-                                <p>શ્રી રમેશભાઈ કરશનભાઇ<br /> <a class="text-dark" href="tel:+919409142150">+91 940 914 2150</a> </p>
+                                <p>શ્રી રમેશભાઈ કરશનભાઇ</p>
+                                <a class="text-dark" href="tel:+919409142150">+91 940 914 2150</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="features-items-wrapper">
-                        <h3>ધાર કેરાળા</h3>
-                        <div class="single-features-item d-flex align-items-center">
-                            <div class="item-icon">
-                                <p>શ્રી ધીરુભાઈ<br /> <a class="text-dark" href="tel:+919979151853">+91 997 915 1853</a> </p>
-                                <br />
-                                <p>
-                                    શ્રી ભીખાભાઈ
-                                    <br /> <a class="text-dark" href="tel:+918758240491">+91 875 824 0491</a>
-                                    <br /> <a class="text-dark" href="tel:+918320431860">+91 832 043 1860</a>
-                                </p>
+
+                        <div class="single-features-item">
+                            <h3 class="border-bottom-h3">વિરપુર</h3>
+                            <div class="mt-20 d-flex align-items-center">
+                                <div class="item-icon">
+                                    <p class="mb-1">શ્રી મુળજીભાઈ વલ્લભભાઈ</p>
+                                    <p>શ્રી સંજયભાઈ છગનભાઈ</p>
+                                    <a class="text-dark" href="tel:+919898734523">+91 989 873 4523</a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
+                    <div class="features-items-wrapper">
+                        <h3 class="border-bottom-h3">નવી કાતર</h3>
+                        <div class="mt-20 d-flex align-items-center">
+                            <div class="item-icon">
+                                <p>શ્રી લાલજીભાઈ મનજીભાઇ</p>
+                                <a class="text-dark" href="tel:+919909507391">+91 990 950 7391</a>
+                            </div>
+                        </div>
+
+                        <div class="single-features-item">
+                            <h3 class="border-bottom-h3">દોલતી</h3>
+                            <div class="mt-20 d-flex align-items-center">
+                                <div class="item-icon">
+                                    <p>શ્રી અશ્વિનભાઈ જસમતભાઈ</p>
+                                    <a class="text-dark mb-1" href="tel:+917698145080">+91 769 814 5080</a>
+                                    <br />
+                                    <p>શ્રી કલ્પેશભાઈ દુલાભાઇ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="features-items-wrapper">
+                        <h3 class="border-bottom-h3">છેલણકા</h3>
+                        <div class="mt-20 d-flex align-items-center">
+                            <div class="item-icon">
+                                <p>શ્રી બાબુભાઈ મનજીભાઈ</p>
+                                <a class="text-dark" href="tel:+919909507391">+91 990 950 7391</a>
+                            </div>
+                        </div>
+                        <div class="single-features-item">
+                            <h3 class="border-bottom-h3">કાંગશીયાળા</h3>
+                            <div class="mt-20 d-flex align-items-center">
+                                <div class="item-icon">
+                                    <p>શ્રી રાજેશભાઈ વલ્લભભાઈ</p>
+                                    <a class="mt-1 text-dark" href="tel:+919429445126">+91 942 944 5126</a>
+                                    <br />
+                                    <a class="mt-1 text-dark" href="tel:+91951295220">+91 951 295 2220</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="features-items-wrapper">
+                        <h3 class ="border-bottom-h3">ધાર કેરાળા</h3>
+                        <div class="mt-20 d-flex align-items-center">
+                            <div class="item-icon">
+                                <p>શ્રી ધીરુભાઈ બચુભાઈ</p>
+                                <a class="text-dark mb-3" href="tel:+919979151853">+91 997 915 1853</a>
+                                <p>શ્રી ભીખાભાઈ નાનજીભાઈ</p>
+                                <a class="text-dark" href="tel:+918758240491">+91 875 824 0491</a><br />
+                                <a class="text-dark" href="tel:+918320431860">+91 832 043 1860</a>
+                            </div>
+                        </div>
+                        <div class="pt-1">
+                            <h3 class="border-bottom-h3">ઢસા</h3>
+                            <div class="mt-20 d-flex align-items-center">
+                                <div class="item-icon">
+                                    <p>શ્રી રાજુભાઇ વજુભાઇ</p>
+                                    <a class="text-dark" href="tel:+919913827408">+91 991 382 7408</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <a href="/Parivar/DevPlaces" class="main-btn pull-right">@Localizer[LocalizationConstant.SeeMore]</a>
+                @*<a href="/Parivar/DevPlaces" class="main-btn pull-right">@Localizer[LocalizationConstant.SeeMore]</a>*@
             </div>
         </div>
     </div>
